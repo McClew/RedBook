@@ -311,6 +311,7 @@
     * [SubBrute](toolbox/tooling/information-gathering/subbrute.md)
     * [subfinder](toolbox/tooling/information-gathering/subfinder.md)
     * [Sublist3r](toolbox/tooling/information-gathering/sublist3r.md)
+    * [WhatWeb](toolbox/tooling/information-gathering/whatweb.md)
     * [Windows Enumeration](toolbox/tooling/information-gathering/windows-enumeration/README.md)
       * [Domain Enumeration](toolbox/tooling/information-gathering/windows-enumeration/domain-enumeration/README.md)
         * [BloodHound](toolbox/tooling/information-gathering/windows-enumeration/domain-enumeration/bloodhound/README.md)
@@ -438,6 +439,7 @@
 
 * [Note Taking](play-books/note-taking.md)
 * [Initial Enumeration](play-books/initial-enumeration.md)
+* [Web Enumeration](play-books/web-enumeration.md)
 * [Linux Enumeration](play-books/linux-enumeration.md)
 * [Linux Privilege Escalation](play-books/linux-privilege-escalation.md)
 * [Windows Enumeration](play-books/windows-enumeration.md)

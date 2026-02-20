@@ -36,13 +36,39 @@ Use tools to query A, AAAA, MX, NS, and TXT records to map the infrastructure.
 {% endstep %}
 
 {% step %}
+#### DNS Zone Transfer
+
+[intelligence](../field-manual/intelligence/ "mention") > [network-enumeration](../field-manual/intelligence/network-enumeration/ "mention") > [#dns-zone-transfer-enumeration](../field-manual/intelligence/network-enumeration/dns.md#dns-zone-transfer-enumeration "mention")
+
+Utilise tools such as [dig.md](../toolbox/tooling/information-gathering/dig.md "mention") and `nslookup` to achieve Zone Transfer enumeration is possible.
+
+* [ ] Complete
+
+***
+{% endstep %}
+
+{% step %}
 #### Subdomain Enumeration
+
+[intelligence](../field-manual/intelligence/ "mention") > [network-enumeration](../field-manual/intelligence/network-enumeration/ "mention") > [#subdomain-enumeration](../field-manual/intelligence/network-enumeration/dns.md#subdomain-enumeration "mention")
 
 [intelligence](../field-manual/intelligence/ "mention") > [web-enumeration](../field-manual/intelligence/web-enumeration/ "mention") > [automated-scanning.md](../field-manual/intelligence/web-enumeration/automated-scanning.md "mention")
 
 [intelligence](../field-manual/intelligence/ "mention") > [web-enumeration](../field-manual/intelligence/web-enumeration/ "mention") > [crawling-spidering.md](../field-manual/intelligence/web-enumeration/crawling-spidering.md "mention")
 
 Use techniques (e.g., certificate transparency logs, brute-forcing, passive lookups) to find hidden or forgotten subdomains. Tools such as [ffuf.md](../toolbox/tooling/web-application-analysis/ffuf.md "mention") and [gobuster.md](../toolbox/tooling/information-gathering/gobuster.md "mention") can help achieve this goal.
+
+* [ ] Complete
+
+***
+{% endstep %}
+
+{% step %}
+#### VHost Discovery
+
+[intelligence](../field-manual/intelligence/ "mention") > [network-enumeration](../field-manual/intelligence/network-enumeration/ "mention") > [#virtual-host-vhost-enumeration](../field-manual/intelligence/network-enumeration/dns.md#virtual-host-vhost-enumeration "mention")
+
+Check for multiple websites/applications hosted on a single IP address.
 
 * [ ] Complete
 
