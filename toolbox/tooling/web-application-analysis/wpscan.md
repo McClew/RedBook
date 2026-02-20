@@ -16,10 +16,18 @@ Download and install from GitHub:\
 
 ***
 
-## Basic Command
+## Basic Commands
+
+### Enumeration
 
 ```bash
 sudo wpscan --url http://blog.acme.com --enumerate
+```
+
+### Brute Force Attack
+
+```bash
+wpscan --url http://ir.inlanefreight.local -P passwords.txt -U ilfreightwp
 ```
 
 ***
