@@ -1,20 +1,3 @@
----
-layout:
-  width: default
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: false
-  metadata:
-    visible: true
----
-
 # Aquatone
 
 Aquatone is a tool for visual inspection of websites across a large amount of hosts and is convenient for quickly gaining an overview of HTTP-based attack surface. Aquatone, is similar to [eyewitness.md](eyewitness.md "mention") and can take screenshots when provided a `.txt` file of hosts or an Nmap `.xml` file with the `-nmap` flag.

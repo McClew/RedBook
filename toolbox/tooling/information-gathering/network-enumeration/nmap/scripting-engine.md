@@ -1,20 +1,3 @@
----
-layout:
-  width: default
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: false
-  metadata:
-    visible: true
----
-
 # Scripting Engine
 
 Nmap Scripting Engine (NSE) is a useful feature of Nmap. It provides us with the possibility to create scripts in **Lua** for interaction with certain services. There are a total of 14 categories into which these scripts can be divided:

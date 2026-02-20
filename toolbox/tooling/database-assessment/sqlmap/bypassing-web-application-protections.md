@@ -1,20 +1,3 @@
----
-layout:
-  width: default
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: false
-  metadata:
-    visible: true
----
-
 # Bypassing Web Application Protections
 
 While automated exploitation typically proceeds without issue in ideal testing environments, problems can arise when running tools like SQLMap against targets protected by various security solutions, such as Web Application Firewalls (WAFs) or Intrusion Prevention Systems (IPSs). Fortunately, SQLMap integrates numerous mechanisms and advanced options specifically designed to help bypass these defensive countermeasures.

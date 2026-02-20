@@ -1,22 +1,8 @@
 ---
 icon: display
-layout:
-  width: default
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: false
-  metadata:
-    visible: true
 ---
 
-# Hosts
+# Domain Hosts Enumeration
 
 ## Cheetsheet
 
@@ -29,7 +15,7 @@ layout:
 | Command                                                                                                                                                       | Description                                                                                                                                                      |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [bloodhound.md](../../../toolbox/tooling/exploitation-tools/bloodhound.md "mention")                                                                          | [bloodhound.md](../../../toolbox/tooling/exploitation-tools/bloodhound.md "mention") can be used to enumerate the entire AD network and visualize relationships. |
-| <p>Get all info:<br><code>Get-NetComputer</code><br><br>Just crucial information:<br><code>Get-NetComputer | select cn,operatingsystem,dnshostname</code></p> | [powerview.md](../../../toolbox/tooling/post-exploitation/powerview.md "mention") command to list domain computers and filter key details.                       |
+| <p>Get all info:<br><code>Get-NetComputer</code><br><br>Just crucial information:<br><code>Get-NetComputer | select cn,operatingsystem,dnshostname</code></p> | [powerview.md](../../../toolbox/tooling/post-exploitation/powersploit/powerview.md "mention") command to list domain computers and filter key details.           |
 | `nslookup <dnshostname>`                                                                                                                                      | Resolves a hostname to an IP address via DNS.                                                                                                                    |
 {% endtab %}
 {% endtabs %}

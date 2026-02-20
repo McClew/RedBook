@@ -1,20 +1,3 @@
----
-layout:
-  width: default
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: false
-  metadata:
-    visible: true
----
-
 # SMBClient
 
 ## **List Shares**
@@ -83,3 +66,4 @@ smb: \> !cat prep-prod.txt
 [] run code-assessment.py
 [] …	
 ```
+

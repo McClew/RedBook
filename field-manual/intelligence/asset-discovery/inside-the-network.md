@@ -1,20 +1,3 @@
----
-layout:
-  width: default
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: false
-  metadata:
-    visible: true
----
-
 # Inside the Network
 
 If we are inside the network one of the first things we will want to do is to discover other hosts. Depending on how much noise you can/want to make, different actions could be performed.

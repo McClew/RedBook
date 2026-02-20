@@ -105,7 +105,33 @@ With the technology of the site analysed, we can fuzz using specific file extens
 
 ***
 
+## Automated Scanning
+
+{% stepper %}
+{% step %}
+#### Automated Mapping
+
+[Broken link](/broken/pages/ro71vMH77bA4elk2JCF3 "mention")
+
+
+
+
+
+
+{% endstep %}
+
+{% step %}
+#### Automated Auditing
+
+
+{% endstep %}
+{% endstepper %}
+
+***
+
 ## Exploitation Techniques
+
+[exploitation](../field-manual/exploitation/ "mention") > [web-attacks](../field-manual/exploitation/web-attacks/ "mention")
 
 ### Low Hanging Fruit
 
@@ -143,9 +169,158 @@ Using tools such as [Exploit-DB](https://www.exploit-db.com/), or [searchsploit.
 {% endstep %}
 {% endstepper %}
 
-### Broken Access Control & Authentication
+### Access Control & Authentication
 
+{% stepper %}
+{% step %}
+#### Broken Access Controls
 
+Test for direct access to administrative URLs or unauthorised data.
 
-### Injection Attacks
+* [ ] Complete
 
+***
+{% endstep %}
+
+{% step %}
+#### Broken Authentication
+
+Audit for weak session management & guessable tokens.
+
+* [ ] Complete
+
+***
+{% endstep %}
+
+{% step %}
+#### Insecure Direct Object Reference (IDOR)
+
+[exploitation](../field-manual/exploitation/ "mention") > [web-attacks](../field-manual/exploitation/web-attacks/ "mention") > [insecure-direct-object-references-idor.md](../field-manual/exploitation/web-attacks/insecure-direct-object-references-idor.md "mention")
+
+Audit for incorrectly implemented access control checks by modifying paramaters (e.g. `user_id`) to access data without authorisation.
+
+* [ ] Complete
+
+***
+{% endstep %}
+{% endstepper %}
+
+### Injection Vulnerabilities
+
+{% stepper %}
+{% step %}
+#### SQL Injection (SQLi)
+
+[exploitation](../field-manual/exploitation/ "mention") > [web-attacks](../field-manual/exploitation/web-attacks/ "mention") > [sql-injection-sqli](../field-manual/exploitation/web-attacks/sql-injection-sqli/ "mention")
+
+Test input fields and URL parameters for database query manipulation.
+
+* [ ] Complete
+
+***
+{% endstep %}
+
+{% step %}
+#### Command Injection
+
+[exploitation](../field-manual/exploitation/ "mention") > [web-attacks](../field-manual/exploitation/web-attacks/ "mention") > [command-injections.md](../field-manual/exploitation/web-attacks/command-injections.md "mention")
+
+Prove for the ability to execuite system commands via the web application.
+
+* [ ] Complete
+
+***
+{% endstep %}
+
+{% step %}
+#### Cross-Site Scripting (XSS)
+
+[exploitation](../field-manual/exploitation/ "mention") > [web-attacks](../field-manual/exploitation/web-attacks/ "mention") > [cross-site-scripting-xss.md](../field-manual/exploitation/web-attacks/cross-site-scripting-xss.md "mention")
+
+Audit for user inputs that are reflected in the browser without sanitisation.
+
+* [ ] Complete
+
+***
+{% endstep %}
+{% endstepper %}
+
+### File & Resource Manipulation
+
+{% stepper %}
+{% step %}
+#### Directory Traversal
+
+[exploitation](../field-manual/exploitation/ "mention") > [web-attacks](../field-manual/exploitation/web-attacks/ "mention") > [directory-traversal.md](../field-manual/exploitation/web-attacks/directory-traversal.md "mention")
+
+Attempt to access sensitive system files such as `/etc/passwd`.
+
+* [ ] Complete
+
+***
+{% endstep %}
+
+{% step %}
+#### Local & Remote File Inclusion (LFI / RFI)
+
+[exploitation](../field-manual/exploitation/ "mention") > [web-attacks](../field-manual/exploitation/web-attacks/ "mention") > [file-inclusion-lfi-rfi.md](../field-manual/exploitation/web-attacks/file-inclusion-lfi-rfi.md "mention")
+
+Prove for the ability to include local or remote files into the application execution.
+
+* [ ] Complete
+
+***
+{% endstep %}
+
+{% step %}
+#### Misconfigured File Upload
+
+[exploitation](../field-manual/exploitation/ "mention") > [web-attacks](../field-manual/exploitation/web-attacks/ "mention") > [file-upload.md](../field-manual/exploitation/web-attacks/file-upload.md "mention")
+
+Attempt to bypass extension filters to upload web shells for [remote-code-execution.md](../field-manual/exploitation/remote-code-execution.md "mention").
+
+* [ ] Complete
+
+***
+{% endstep %}
+{% endstepper %}
+
+### Server-Side Vulnerabilities
+
+{% stepper %}
+{% step %}
+#### Server-Side Request Forgery (SSRF)
+
+[exploitation](../field-manual/exploitation/ "mention") > [web-attacks](../field-manual/exploitation/web-attacks/ "mention") > [server-side-request-forgery-ssrf.md](../field-manual/exploitation/web-attacks/server-side-request-forgery-ssrf.md "mention")
+
+Audit the application for parameters that can be manipulated to force the server into making unauthorised requests to internal resources or cloud services.
+
+* [ ] Complete
+
+***
+{% endstep %}
+
+{% step %}
+#### XML External Entity (XXE) Injection
+
+[exploitation](../field-manual/exploitation/ "mention") > [web-attacks](../field-manual/exploitation/web-attacks/ "mention") > [xml-external-entity-xxe-injection.md](../field-manual/exploitation/web-attacks/xml-external-entity-xxe-injection.md "mention")
+
+Test XML input fields and parsers for the ability to reference external entities to read local system files or interact with internal services.
+
+* [ ] Complete
+
+***
+{% endstep %}
+
+{% step %}
+#### Server-Side Template Injection (SSTI)
+
+[exploitation](../field-manual/exploitation/ "mention") > [web-attacks](../field-manual/exploitation/web-attacks/ "mention") > [server-side-template-injection-ssti.md](../field-manual/exploitation/web-attacks/server-side-template-injection-ssti.md "mention")
+
+Identify and probe web template engines (e.g. `Jinga2` and `Twig`) for the ability to inject and execute malicious code within the servers context.
+
+* [ ] Complete
+
+***
+{% endstep %}
+{% endstepper %}

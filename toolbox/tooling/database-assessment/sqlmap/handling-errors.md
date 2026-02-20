@@ -1,20 +1,3 @@
----
-layout:
-  width: default
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: false
-  metadata:
-    visible: true
----
-
 # Handling Errors
 
 When setting up or running SQLMap, particularly when dealing with HTTP requests, we may encounter problems. This section details the recommended mechanisms for diagnosing the cause of errors and fixing them appropriately.&#x20;

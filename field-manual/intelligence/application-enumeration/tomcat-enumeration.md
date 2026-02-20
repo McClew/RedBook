@@ -1,20 +1,3 @@
----
-layout:
-  width: default
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: false
-  metadata:
-    visible: true
----
-
 # Tomcat Enumeration
 
 [Apache Tomcat](https://tomcat.apache.org) is an open-source web server that hosts applications written in Java.

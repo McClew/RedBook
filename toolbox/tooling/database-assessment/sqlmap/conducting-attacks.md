@@ -1,20 +1,3 @@
----
-layout:
-  width: default
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: false
-  metadata:
-    visible: true
----
-
 # Conducting Attacks
 
 SQLMap is a comprehensive penetration testing tool designed to automate the detection and exploitation of SQL injection vulnerabilities, ranging from basic data extraction to taking over the underlying operating system. This article serves as a quick reference for running various exploitation techniques using SQLMap switches and options.

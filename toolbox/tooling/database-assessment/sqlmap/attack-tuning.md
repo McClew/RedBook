@@ -1,20 +1,3 @@
----
-layout:
-  width: default
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: false
-  metadata:
-    visible: true
----
-
 # Attack Tuning
 
 In most scenarios, SQLMap should function effectively upon being provided with the target details. However, it offers specific options designed to fine-tune the detection phase by customising SQL injection attempts. Every payload that SQLMap sends is composed of a vector, which carries the useful SQL code, and boundaries, consisting of prefix and suffix formations used to properly inject the vector into the vulnerable SQL statement.
