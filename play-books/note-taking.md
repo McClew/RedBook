@@ -1,26 +1,10 @@
 ---
 icon: memo-circle-check
-layout:
-  width: default
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: false
-  metadata:
-    visible: true
 ---
 
 # Note Taking
 
 ### Administrative & Environmental Markers
-
-Capture the "ground truth" of the engagement to prevent confusion during complex pivoting.
 
 {% stepper %}
 {% step %}
@@ -44,8 +28,6 @@ If you gain access to a new subnet or interface, record the new IP range and the
 
 ### Enumeration & Discovery Markers
 
-These markers ensure you have a "paper trail" for the report's Technical Requirements section.
-
 {% stepper %}
 {% step %}
 #### Unusual Port/Service
@@ -67,8 +49,6 @@ When `ffuf` or `gobuster` finds a 200 OK on a hidden directory or virtual host, 
 {% endstepper %}
 
 ### Exploitation & Evidence Markers
-
-These are the most critical markers for the CPTS exam, as they form the "Proof of Concept" (PoC).
 
 {% stepper %}
 {% step %}
@@ -92,8 +72,6 @@ Document any time you have to bypass a firewall, IDS, or WAF. Include the specif
 
 ### Privilege Escalation Markers
 
-Capture the transition from low-privilege to administrative access.
-
 {% stepper %}
 {% step %}
 #### Misconfiguration Identified
@@ -116,8 +94,6 @@ Keep a running list of every file you upload (e.g., `linpeas.sh`, `nc`) and ever
 
 ### Reporting & Impact Markers
 
-These markers help you translate technical actions into business risk.
-
 {% stepper %}
 {% step %}
 #### Sensitive Data Access
@@ -131,12 +107,3 @@ Note any PII (Personally Identifiable Information), configuration files, or inte
 Document what an attacker could do with your level of access (e.g., "Access to the database allows for the full exfiltration of the customer list").
 {% endstep %}
 {% endstepper %}
-
-***
-
-## NotebookLM Markers
-
-When making notes that will be ingested into NotebookLM later, use these codes:
-
-* `[CMD]`: Prefix for every command you ran.
-* `[TODO]`: For ideas you have but haven't tested yet.
