@@ -10,6 +10,27 @@ DNS offers a variety of information about public - and sometimes private - serve
 
 ## DNS Enumeration
 
+### nslookup
+
+To find the nameserver of a domain we can utilise tools such as `dig` and `nslookup`.
+
+```bash
+nslookup -type=ns [DOMAIN] [SERVER_IP]
+```
+
+This command can provide outputs such as:
+
+```bash
+~ [10.10.15.82]
+> nslookup -type=ns inlanefreight.local 10.129.14.119
+Server:         10.129.14.119
+Address:        10.129.14.119#53
+
+inlanefreight.local     nameserver = inlanefreight.local.
+```
+
+### Tools
+
 | Tool                       | Description                                                                                             |
 | -------------------------- | ------------------------------------------------------------------------------------------------------- |
 | dig                        | Versatile DNS lookup tool that supports various query types (A, MX, NS, TXT, etc.) and detailed output. |
