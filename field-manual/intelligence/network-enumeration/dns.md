@@ -27,16 +27,16 @@ DNS offers a variety of information about public - and sometimes private - serve
 
 Subdomain enumeration is the process of systematically identifying and listing subdomains. From a DNS perspective, subdomains are typically represented by A (or AAAA for IPv6) records, which map the subdomain name to its corresponding IP address. Additionally, CNAME records might be used to create aliases for subdomains, pointing them to other domains or subdomains.
 
-| Tool        | Description                                                                                                                                                    |
-| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| DNSEnum     | Automated DNS enumeration tool, dictionary attacks, brute-forcing, zone transfers (if allowed).                                                                |
-| fierce      | User-friendly tool for recursive subdomain discovery, featuring wildcard detection and an easy-to-use interface.                                               |
-| dnsrecon    | Versatile tool that combines multiple DNS reconnaissance techniques and offers customisable output formats.                                                    |
-| ffuf        | Fast and flexible web fuzzer, used for discovering hidden paths, parameters, and subdomains by systematically brute-forcing URLs, headers, and other requests. |
-| gobuster    | Gobuster is a command-line tool for brute-forcing URIs (directories, files), DNS subdomains, and virtual hostnames on web servers.                             |
-| amass       | Actively maintained tool focused on subdomain discovery, known for its integration with other tools and extensive data sources.                                |
-| assetfinder | Simple yet effective tool for finding subdomains using various techniques, ideal for quick and lightweight scans.                                              |
-| puredns     | Powerful and flexible DNS brute-forcing tool, capable of resolving and filtering results effectively.                                                          |
+| Tool                                                                                | Description                                                                                                                                                    |
+| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [dnsenum.md](../../../toolbox/tooling/information-gathering/dnsenum.md "mention")   | Automated DNS enumeration tool, dictionary attacks, brute-forcing, zone transfers (if allowed).                                                                |
+| [fierce.md](../../../toolbox/tooling/information-gathering/fierce.md "mention")     | User-friendly tool for recursive subdomain discovery, featuring wildcard detection and an easy-to-use interface.                                               |
+| dnsrecon                                                                            | Versatile tool that combines multiple DNS reconnaissance techniques and offers customisable output formats.                                                    |
+| [ffuf.md](../../../toolbox/tooling/web-application-analysis/ffuf.md "mention")      | Fast and flexible web fuzzer, used for discovering hidden paths, parameters, and subdomains by systematically brute-forcing URLs, headers, and other requests. |
+| [gobuster.md](../../../toolbox/tooling/information-gathering/gobuster.md "mention") | Gobuster is a command-line tool for brute-forcing URIs (directories, files), DNS subdomains, and virtual hostnames on web servers.                             |
+| amass                                                                               | Actively maintained tool focused on subdomain discovery, known for its integration with other tools and extensive data sources.                                |
+| assetfinder                                                                         | Simple yet effective tool for finding subdomains using various techniques, ideal for quick and lightweight scans.                                              |
+| puredns                                                                             | Powerful and flexible DNS brute-forcing tool, capable of resolving and filtering results effectively.                                                          |
 
 Subdomains can also be enumerated using scripts: DNS Lookup Brute Force DNS Reverse Lookup Brute Force.
 
@@ -46,11 +46,11 @@ Subdomains can also be enumerated using scripts: DNS Lookup Brute Force DNS Reve
 
 Virtual hosting is the ability of web servers to distinguish between multiple websites or applications sharing the same IP address. This is achieved by leveraging the HTTP Host header, a piece of information included in every HTTP request sent by a web browser.
 
-| Tool        | Description                                                                                                                                                                      |
-| ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| gobuster    | A multi-purpose tool often used for directory/file brute-forcing, but also effective for virtual host discovery. Fast, supports multiple HTTP methods, can use custom wordlists. |
-| Feroxbuster | Similar to Gobuster, but with a Rust-based implementation, known for its speed and flexibility. Supports recursion, wildcard discovery, and various filters.                     |
-| ffuf        | Another fast web fuzzer that can be used for virtual host discovery by fuzzing the Host header. Customizable wordlist input and filtering options.                               |
+| Tool                                                                                | Description                                                                                                                                                                      |
+| ----------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [gobuster.md](../../../toolbox/tooling/information-gathering/gobuster.md "mention") | A multi-purpose tool often used for directory/file brute-forcing, but also effective for virtual host discovery. Fast, supports multiple HTTP methods, can use custom wordlists. |
+| Feroxbuster                                                                         | Similar to Gobuster, but with a Rust-based implementation, known for its speed and flexibility. Supports recursion, wildcard discovery, and various filters.                     |
+| [ffuf.md](../../../toolbox/tooling/web-application-analysis/ffuf.md "mention")      | Another fast web fuzzer that can be used for virtual host discovery by fuzzing the Host header. Customizable wordlist input and filtering options.                               |
 
 ***
 
