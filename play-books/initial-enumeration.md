@@ -19,6 +19,8 @@ Passive reconnaissance or [osint](../field-manual/intelligence/osint/ "mention")
 Retrieve registration data, including creation/expiration dates, registrar, and potentially contact information (if not privacy-protected).
 
 * [ ] Complete
+
+***
 {% endstep %}
 
 {% step %}
@@ -29,6 +31,8 @@ Retrieve registration data, including creation/expiration dates, registrar, and 
 Use tools to query A, AAAA, MX, NS, and TXT records to map the infrastructure.
 
 * [ ] Complete
+
+***
 {% endstep %}
 
 {% step %}
@@ -41,6 +45,8 @@ Use tools to query A, AAAA, MX, NS, and TXT records to map the infrastructure.
 Use techniques (e.g., certificate transparency logs, brute-forcing, passive lookups) to find hidden or forgotten subdomains. Tools such as [ffuf.md](../toolbox/tooling/web-application-analysis/ffuf.md "mention") and [gobuster.md](../toolbox/tooling/information-gathering/gobuster.md "mention") can help achieve this goal.
 
 * [ ] Complete
+
+***
 {% endstep %}
 {% endstepper %}
 
@@ -55,6 +61,8 @@ Use techniques (e.g., certificate transparency logs, brute-forcing, passive look
 Use advanced search operators (Google Dorks, Bing Dorks) to find sensitive files, error messages, login pages, or exposed directories.
 
 * [ ] Complete
+
+***
 {% endstep %}
 
 {% step %}
@@ -63,6 +71,8 @@ Use advanced search operators (Google Dorks, Bing Dorks) to find sensitive files
 Search platforms like GitHub, GitLab, and Bitbucket for exposed credentials, API keys, configuration files, or internal documentation related to the target.
 
 * [ ] Complete
+
+***
 {% endstep %}
 
 {% step %}
@@ -71,6 +81,8 @@ Search platforms like GitHub, GitLab, and Bitbucket for exposed credentials, API
 Analyse document metadata (PDFs, DOCX) found online for internal usernames, server names, or geographical data.
 
 * [ ] Complete
+
+***
 {% endstep %}
 {% endstepper %}
 
@@ -85,6 +97,8 @@ Analyse document metadata (PDFs, DOCX) found online for internal usernames, serv
 Search for key employees on platforms like LinkedIn to understand organisational structure, technology stacks, and potential phishing targets.
 
 * [ ] Complete
+
+***
 {% endstep %}
 
 {% step %}
@@ -93,6 +107,8 @@ Search for key employees on platforms like LinkedIn to understand organisational
 Attempt to determine a common email format for the organisation (e.g., `firstname.lastname@target.com`).
 
 * [ ] Complete
+
+***
 {% endstep %}
 {% endstepper %}
 
@@ -111,6 +127,8 @@ Active reconnaissance involves direct interaction with the target's network, whi
 Identify which hosts are alive on the target network.
 
 * [ ] Complete
+
+***
 {% endstep %}
 
 {% step %}
@@ -119,6 +137,8 @@ Identify which hosts are alive on the target network.
 Use a tool like [nmap](../toolbox/tooling/information-gathering/network-enumeration/nmap/ "mention") to identify common open ports and the services running on them. Start with less-invasive, non-aggressive scans.
 
 * [ ] Complete
+
+***
 {% endstep %}
 
 {% step %}
@@ -127,6 +147,8 @@ Use a tool like [nmap](../toolbox/tooling/information-gathering/network-enumerat
 Test methods to bypass basic network defences.
 
 * [ ] Complete
+
+***
 {% endstep %}
 {% endstepper %}
 
@@ -139,6 +161,8 @@ Test methods to bypass basic network defences.
 Re-scan the open ports identified in the initial step to accurately determine the software version, operating system, and specific configurations (e.g., HTTP headers, SSL/TLS certificate details). Ports & services can be scanned using tools like [nmap](../toolbox/tooling/information-gathering/network-enumeration/nmap/ "mention").
 
 * [ ] Complete
+
+***
 {% endstep %}
 
 {% step %}
@@ -147,6 +171,8 @@ Re-scan the open ports identified in the initial step to accurately determine th
 Access identified web services to check for common files like `robots.txt`, `sitemap.xml`, or hidden directories. See [#robots.txt](../field-manual/intelligence/web-enumeration/crawling-spidering.md#robots.txt "mention") for more information.&#x20;
 
 * [ ] Complete
+
+***
 {% endstep %}
 {% endstepper %}
 
@@ -159,6 +185,8 @@ Access identified web services to check for common files like `robots.txt`, `sit
 Use tools like [ffuf.md](../toolbox/tooling/web-application-analysis/ffuf.md "mention") or [gobuster.md](../toolbox/tooling/information-gathering/gobuster.md "mention") against identified web services to find hidden files, folders, or pages that are not linked from the main site.
 
 * [ ] Complete
+
+***
 {% endstep %}
 
 {% step %}
@@ -167,5 +195,7 @@ Use tools like [ffuf.md](../toolbox/tooling/web-application-analysis/ffuf.md "me
 Check for multiple websites hosted on the same IP address.
 
 * [ ] Complete
+
+***
 {% endstep %}
 {% endstepper %}
