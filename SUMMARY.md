@@ -163,7 +163,7 @@
     * [Command Injections](field-manual/exploitation/web-attacks/command-injections.md)
     * [Cross-Site Scripting (XSS)](field-manual/exploitation/web-attacks/cross-site-scripting-xss.md)
     * [Directory Traversal](field-manual/exploitation/web-attacks/directory-traversal.md)
-    * [File Inclusion (LFI / RFI)](field-manual/exploitation/web-attacks/file-inclusion-lfi-rfi.md)
+    * [File Inclusion (LFI / RFI)](field-manual/exploitation/web-attacks/file-inclusion.md)
     * [File Upload](field-manual/exploitation/web-attacks/file-upload.md)
     * [HTTP Verb Tampering](field-manual/exploitation/web-attacks/http-verb-tampering.md)
     * [Insecure Direct Object References (IDOR)](field-manual/exploitation/web-attacks/insecure-direct-object-references-idor.md)

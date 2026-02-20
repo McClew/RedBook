@@ -111,19 +111,25 @@ With the technology of the site analysed, we can fuzz using specific file extens
 {% step %}
 #### Automated Mapping
 
-[Broken link](/broken/pages/ro71vMH77bA4elk2JCF3 "mention")
+[Broken link](/broken/pages/ro71vMH77bA4elk2JCF3 "mention") > [tooling](../toolbox/tooling/ "mention") > [web-application-analysis](../toolbox/tooling/web-application-analysis/ "mention")
 
+Run tools like [eyewitness.md](../toolbox/tooling/web-application-analysis/eyewitness.md "mention") to generate a visual gallery of web interfaces for easy identification of high-value targets.
 
+* [ ] Complete
 
-
-
-
+***
 {% endstep %}
 
 {% step %}
 #### Automated Auditing
 
+[Broken link](/broken/pages/ro71vMH77bA4elk2JCF3 "mention") > [tooling](../toolbox/tooling/ "mention") > [vulnerability-analysis](../toolbox/tooling/vulnerability-analysis/ "mention")
 
+Utilise tools such as [nikto.md](../toolbox/tooling/vulnerability-analysis/nikto.md "mention") against specific targets to identify low-hanging fruit such as common misconfigurations.
+
+* [ ] Complete
+
+***
 {% endstep %}
 {% endstepper %}
 
@@ -133,7 +139,7 @@ With the technology of the site analysed, we can fuzz using specific file extens
 
 [exploitation](../field-manual/exploitation/ "mention") > [web-attacks](../field-manual/exploitation/web-attacks/ "mention")
 
-### Low Hanging Fruit
+### Low-Hanging Fruit
 
 {% stepper %}
 {% step %}
@@ -263,7 +269,7 @@ Attempt to access sensitive system files such as `/etc/passwd`.
 {% step %}
 #### Local & Remote File Inclusion (LFI / RFI)
 
-[exploitation](../field-manual/exploitation/ "mention") > [web-attacks](../field-manual/exploitation/web-attacks/ "mention") > [file-inclusion-lfi-rfi.md](../field-manual/exploitation/web-attacks/file-inclusion-lfi-rfi.md "mention")
+[exploitation](../field-manual/exploitation/ "mention") > [web-attacks](../field-manual/exploitation/web-attacks/ "mention") > [file-inclusion.md](../field-manual/exploitation/web-attacks/file-inclusion.md "mention")
 
 Prove for the ability to include local or remote files into the application execution.
 
