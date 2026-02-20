@@ -1,26 +1,10 @@
 ---
 icon: linux
-layout:
-  width: default
-  title:
-    visible: true
-  description:
-    visible: false
-  tableOfContents:
-    visible: true
-  outline:
-    visible: true
-  pagination:
-    visible: false
-  metadata:
-    visible: true
 ---
 
 # Linux Enumeration
 
 ## Internal Enumeration
-
-\-
 
 ### System & Kernel
 
@@ -45,12 +29,20 @@ cat /etc/os-release
 ```bash
 hostnamectl
 ```
+
+* [ ] Complete
+
+***
 {% endstep %}
 
 {% step %}
 #### Kernel Exploitation Check
 
 Compare the kernel version against exploit databases like [searchsploit.md](../toolbox/tooling/exploitation-tools/searchsploit.md "mention") or `Exploit-DB`. Identify if the kernel is unpatched against public local privilege escalation (LPE) exploits.
+
+* [ ] Complete
+
+***
 {% endstep %}
 
 {% step %}
@@ -67,6 +59,10 @@ env
 ```bash
 printenv
 ```
+
+* [ ] Complete
+
+***
 {% endstep %}
 {% endstepper %}
 
@@ -93,6 +89,10 @@ whoami
 ```bash
 getcap -r / 2>/dev/null
 ```
+
+* [ ] Complete
+
+***
 {% endstep %}
 
 {% step %}
@@ -113,6 +113,10 @@ last
 ```bash
 w
 ```
+
+* [ ] Complete
+
+***
 {% endstep %}
 
 {% step %}
@@ -125,6 +129,10 @@ Check if the current user can execute commands as root or another user, specific
 ```bash
 sudo -l
 ```
+
+* [ ] Complete
+
+***
 {% endstep %}
 {% endstepper %}
 
@@ -147,6 +155,10 @@ netstat -ano
 ```bash
 ss -tulnp
 ```
+
+* [ ] Complete
+
+***
 {% endstep %}
 
 {% step %}
@@ -163,6 +175,10 @@ ip route
 ```bash
 arp -a
 ```
+
+* [ ] Complete
+
+***
 {% endstep %}
 
 {% step %}
@@ -175,6 +191,10 @@ Monitor internal traffic briefly to identify active communication between the ho
 ```bash
 tcpdump -i eth0 -c 50
 ```
+
+* [ ] Complete
+
+***
 {% endstep %}
 {% endstepper %}
 
@@ -197,6 +217,10 @@ ps aux
 ```bash
 top
 ```
+
+* [ ] Complete
+
+***
 {% endstep %}
 
 {% step %}
@@ -213,6 +237,10 @@ cat /etc/crontab
 ```bash
 ls -la /etc/cron.*
 ```
+
+* [ ] Complete
+
+***
 {% endstep %}
 
 {% step %}
@@ -233,6 +261,10 @@ dpkg -l
 rpm -qa
 ```
 {% endcode %}
+
+* [ ] Complete
+
+***
 {% endstep %}
 
 {% step %}
@@ -257,6 +289,10 @@ Audit these files for database passwords, API keys, or hardcoded administrative 
 ```bash
 find / -name "*config*" 2>/dev/null
 ```
+
+* [ ] Complete
+
+***
 {% endstep %}
 {% endstepper %}
 
@@ -275,6 +311,10 @@ Locate files with the SUID bit set, which execute with the privileges of the fil
 ```bash
 find / -perm -u=s -type f 2>/dev/null
 ```
+
+* [ ] Complete
+
+***
 {% endstep %}
 
 {% step %}
@@ -287,6 +327,10 @@ Search for configuration files or system scripts that the current user has write
 ```bash
 find / -writable -type f 2>/dev/null | grep -v "/proc"
 ```
+
+* [ ] Complete
+
+***
 {% endstep %}
 
 {% step %}
@@ -303,6 +347,10 @@ ls -la ~/.ssh/
 ```bash
 cat /etc/ssh/sshd_config
 ```
+
+* [ ] Complete
+
+***
 {% endstep %}
 {% endstepper %}
 
@@ -319,11 +367,19 @@ Use automated tools to map the attack surface. This saves time and identifies co
 #### Automated Script
 
 Run `LinPeas` or `lse.sh` (Linux Smart Enumeration).
+
+* [ ] Complete
+
+***
 {% endstep %}
 
 {% step %}
 #### Output Management
 
 Redirect tool output to a file and transfer it to your attack host for persistent analysis using `grep` or automated parsers.
+
+* [ ] Complete
+
+***
 {% endstep %}
 {% endstepper %}
