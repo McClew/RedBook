@@ -241,7 +241,7 @@ Prove for the ability to execuite system commands via the web application.
 {% step %}
 #### Cross-Site Scripting (XSS)
 
-[exploitation](../field-manual/exploitation/ "mention") > [web-attacks](../field-manual/exploitation/web-attacks/ "mention") > [cross-site-scripting-xss.md](../field-manual/exploitation/web-attacks/cross-site-scripting-xss.md "mention")
+[exploitation](../field-manual/exploitation/ "mention") > [web-attacks](../field-manual/exploitation/web-attacks/ "mention") > [Broken link](/broken/pages/hal1J22c3bmQ0FG4obsI "mention")
 
 Audit for user inputs that are reflected in the browser without sanitisation.
 

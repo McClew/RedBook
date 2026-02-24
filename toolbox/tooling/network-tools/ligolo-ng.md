@@ -68,7 +68,7 @@ With the `-selfcert` flag the tool dynamically generates self-signed certificate
 
 Once you run this, the tool will start listening at port `11601` on all interfaces and you will get access to the tool’s command line.
 
-<figure><img src="../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
 {% endstep %}
 
 {% step %}
@@ -90,7 +90,7 @@ Now we can run the following command to connect back to our attacking machine:
 The `-ignore-cert` ignores certificate validation. This means we won't have any issues with our self-signed certs.
 {% endhint %}
 
-<figure><img src="../../../.gitbook/assets/image (1) (1).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1) (1) (1).png" alt=""><figcaption></figcaption></figure>
 
 It may take a second for the connection to be established and when it is, we will see that an agent has joined.
 
@@ -246,7 +246,7 @@ Then we can run the agent on the Windows host with the following command:
 We use the IP of the compromised web server using our newly added listener.
 {% endhint %}
 
-<figure><img src="../../../.gitbook/assets/image.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/image (1).png" alt=""><figcaption></figcaption></figure>
 
 Once again, ligolo-ng will tell us that an agent has joined. We can use the `session` command as before to switch to the new session and then `start` to begin a tunnel over that connection instead.
 
