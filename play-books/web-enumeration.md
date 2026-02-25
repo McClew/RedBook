@@ -146,6 +146,16 @@ Utilise tools such as [nikto.md](../toolbox/tooling/vulnerability-analysis/nikto
 
 ***
 {% endstep %}
+
+{% step %}
+### Automated Defence Discovery
+
+[Broken link](/broken/pages/ro71vMH77bA4elk2JCF3 "mention") > [tooling](../toolbox/tooling/ "mention") > [web-application-analysis](../toolbox/tooling/web-application-analysis/ "mention")
+
+Use automated tools such as [wafw00f.md](../toolbox/tooling/web-application-analysis/wafw00f.md "mention") to identify and fingerprint Web Application Firewalls (WAF) that are active on the target.
+
+* [ ] Complete
+{% endstep %}
 {% endstepper %}
 
 ***
