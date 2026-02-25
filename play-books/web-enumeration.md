@@ -45,7 +45,7 @@ Identify what applications - such as WordPress, Drupal, etc. - that are in use.
 
 **Automated Analysis**
 
-Browser tools such as [Wappalyzer](https://www.wappalyzer.com/), [urlscan.io](https://urlscan.io/) and [builtwith.com](https://builtwith.com/) can achieve this. Local automated tooling includes [whatweb.md](../toolbox/tooling/information-gathering/whatweb.md "mention") and [nikto.md](../toolbox/tooling/vulnerability-analysis/nikto.md "mention").
+Browser tools such as [Wappalyzer](https://www.wappalyzer.com/), [urlscan.io](https://urlscan.io/) and [builtwith.com](https://builtwith.com/) can achieve this. Local automated tooling includes [whatweb.md](../toolbox/tooling/web-application-analysis/whatweb.md "mention") and [nikto.md](../toolbox/tooling/vulnerability-analysis/nikto.md "mention").
 
 **Manual Analysis**
 
@@ -71,7 +71,7 @@ The tools and techniques mentioned above will likely also provide the version of
 {% step %}
 #### Technology Discovery
 
-Determine what languages the server is running. If automated tools such as [Wappalyzer](https://www.wappalyzer.com/) or [whatweb.md](../toolbox/tooling/information-gathering/whatweb.md "mention") do not identify the back-end technology in use, try identifying the dependencies of discovered applications.
+Determine what languages the server is running. If automated tools such as [Wappalyzer](https://www.wappalyzer.com/) or [whatweb.md](../toolbox/tooling/web-application-analysis/whatweb.md "mention") do not identify the back-end technology in use, try identifying the dependencies of discovered applications.
 
 * [ ] Discover the whole technology stack
 
