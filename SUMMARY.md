@@ -167,7 +167,7 @@
       * [Reflected XSS](field-manual/exploitation/web-attacks/cross-site-scripting-xss/reflected-xss.md)
       * [DOM XSS](field-manual/exploitation/web-attacks/cross-site-scripting-xss/dom-xss.md)
       * [Session Hijacking](field-manual/exploitation/web-attacks/cross-site-scripting-xss/session-hijacking.md)
-    * [Directory Traversal](field-manual/exploitation/web-attacks/directory-traversal.md)
+    * [Path Traversal](field-manual/exploitation/web-attacks/path-traversal.md)
     * [File Inclusion (LFI / RFI)](field-manual/exploitation/web-attacks/file-inclusion.md)
     * [File Upload](field-manual/exploitation/web-attacks/file-upload.md)
     * [HTTP Verb Tampering](field-manual/exploitation/web-attacks/http-verb-tampering.md)
