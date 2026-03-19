@@ -160,7 +160,7 @@
     * [LLMNR/NBT-NS Poisoning](field-manual/exploitation/man-in-the-middle/llmnr-nbt-ns-poisoning.md)
   * [Remote Code Execution](field-manual/exploitation/remote-code-execution.md)
   * [Web Attacks](field-manual/exploitation/web-attacks/README.md)
-    * [Command Injections](field-manual/exploitation/web-attacks/command-injections.md)
+    * [Command Injection](field-manual/exploitation/web-attacks/command-injection.md)
     * [Cross-Site Scripting (XSS)](field-manual/exploitation/web-attacks/cross-site-scripting-xss/README.md)
       * [Enumeration](field-manual/exploitation/web-attacks/cross-site-scripting-xss/enumeration.md)
       * [Persistent / Stored XSS](field-manual/exploitation/web-attacks/cross-site-scripting-xss/persistent-stored-xss.md)
