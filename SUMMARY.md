@@ -162,6 +162,7 @@
   * [Web Attacks](field-manual/exploitation/web-attacks/README.md)
     * [API Exploitation](field-manual/exploitation/web-attacks/api-exploitation/README.md)
       * [Reconnaissance](field-manual/exploitation/web-attacks/api-exploitation/reconnaissance.md)
+      * [Server-Side Parameter Pollution](field-manual/exploitation/web-attacks/api-exploitation/server-side-parameter-pollution.md)
     * [Authentication Vulnerabilities](field-manual/exploitation/web-attacks/authentication-vulnerabilities.md)
     * [Clickjacking](field-manual/exploitation/web-attacks/clickjacking.md)
     * [Command Injection](field-manual/exploitation/web-attacks/command-injection.md)
