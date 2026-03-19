@@ -176,6 +176,7 @@
     * [Server-Side Request Forgery (SSRF)](field-manual/exploitation/web-attacks/server-side-request-forgery-ssrf.md)
     * [Server-Side Template Injection (SSTI)](field-manual/exploitation/web-attacks/server-side-template-injection-ssti.md)
     * [SQL Injection (SQLi)](field-manual/exploitation/web-attacks/sql-injection-sqli/README.md)
+      * [Detection](field-manual/exploitation/web-attacks/sql-injection-sqli/detection.md)
       * [Enumeration](field-manual/exploitation/web-attacks/sql-injection-sqli/enumeration.md)
       * [Read & Write Files](field-manual/exploitation/web-attacks/sql-injection-sqli/read-and-write-files.md)
       * [UNION based SQLi](field-manual/exploitation/web-attacks/sql-injection-sqli/union-based-sqli.md)
