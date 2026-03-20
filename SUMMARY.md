@@ -451,6 +451,7 @@
     * [Bash Reverse Shell](toolbox/snippets/shells/bash-reverse-shell.md)
     * [PowerShell Reverse Shell](toolbox/snippets/shells/bash-reverse-shell-1.md)
     * [PHP Reverse Shell](toolbox/snippets/shells/php-reverse-shell.md)
+    * [Python Socket](toolbox/snippets/shells/python-socket.md)
   * [Vulnerability Exploit Scripts](toolbox/snippets/vulnerability-exploit-scripts/README.md)
     * [Linux Privilege Escalation](toolbox/snippets/vulnerability-exploit-scripts/linux-privilege-escalation/README.md)
       * [Screen\_Exploit\_POC.sh](toolbox/snippets/vulnerability-exploit-scripts/linux-privilege-escalation/screen_exploit_poc.sh.md)
