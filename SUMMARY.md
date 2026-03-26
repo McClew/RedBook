@@ -8,6 +8,8 @@
   * [Web Application Pentest Process](field-manual/pre-engagement/web-application-pentest-process.md)
   * [Non-Disclosure Agreement](field-manual/pre-engagement/non-disclosure-agreement.md)
   * [Scope Definition](field-manual/pre-engagement/scope-definition.md)
+  * [Master Service Agreement](field-manual/pre-engagement/master-service-agreement.md)
+  * [Statement of Work](field-manual/pre-engagement/statement-of-work.md)
   * [Rules of Engagement](field-manual/pre-engagement/rules-of-engagement.md)
   * [Agreement / Contract](field-manual/pre-engagement/agreement-contract.md)
   * [Note Taking](field-manual/pre-engagement/note-taking.md)

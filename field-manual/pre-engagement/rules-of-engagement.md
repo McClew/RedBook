@@ -6,6 +6,23 @@ icon: scale-balanced
 
 The Rules of Engagement (**RoE**) is a document that explains how a penetration test will be done. It's an agreement between the client and testing team that clearly states what is allowed and what isn't. This document is important because it helps avoid confusion and sets clear expectations.
 
+The RoE acts as the technical playbook and safety barrier for the test. It is arguably the most critical document for the tester's day-to-day work.
+
+* **Purpose**: Establishes the technical constraints and guidelines to prevent service disruption and ensure legal protection.
+* **Key Components**:
+  * **Allowed vs. Prohibited Actions**: Explicitly states what attacks are off-limits (e.g., Denial of Service (DoS) is almost always prohibited).
+  * **Emergency Contacts**: Must include specific names and phone numbers for both:
+    * The Pentester (in case the client notices an issue).
+    * The Client (someone with the authority to stop the test immediately if critical infrastructure fails).
+  * **Handling Sensitive Data**: Protocols for what to do if PII (Personally Identifiable Information) or other sensitive data is accessed.
+  * **Critical Findings**: Procedures for notifying the client immediately if a high-severity vulnerability is found mid-test.
+
+{% hint style="danger" %}
+#### Important
+
+The ROE is what keeps a penetration test legal. Deviating from the ROE can result in criminal liability.
+{% endhint %}
+
 ***
 
 ## **Defining the Boundaries**
