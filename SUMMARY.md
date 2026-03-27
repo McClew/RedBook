@@ -416,6 +416,7 @@
   * [Sniffing & Spoofing](toolbox/tooling/sniffing-and-spoofing/README.md)
     * [Bettercap](toolbox/tooling/sniffing-and-spoofing/bettercap.md)
     * [Ettercap](toolbox/tooling/sniffing-and-spoofing/ettercap.md)
+    * [mitm6](toolbox/tooling/sniffing-and-spoofing/mitm6.md)
     * [Responder](toolbox/tooling/sniffing-and-spoofing/responder.md)
     * [Inveigh](toolbox/tooling/sniffing-and-spoofing/inveigh.md)
   * [Post Exploitation](toolbox/tooling/post-exploitation/README.md)
