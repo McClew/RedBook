@@ -30,13 +30,13 @@ Perform an Fping ICMP sweep to final all hosts on your subnet that respond to an
 {% endstep %}
 
 {% step %}
-### Nmap Network Scan
+#### Nmap Network Scan
 
 Perform an NMAP identification scan to validate findings (it may find something previously missed).
 {% endstep %}
 
 {% step %}
-### Nmap Service Scan
+#### Nmap Service Scan
 
 Use all disocvered hosts to perform an NMAP scan to determin services running on each host.
 
@@ -48,7 +48,7 @@ Use all disocvered hosts to perform an NMAP scan to determin services running on
 
 {% stepper %}
 {% step %}
-###
+#### SMB NULL Session
 
 Attempt to abuse an SMB NULL session against the domain controller.
 
@@ -56,7 +56,7 @@ Attempt to abuse an SMB NULL session against the domain controller.
 {% endstep %}
 
 {% step %}
-###
+#### LDAP Anonymous Authentication
 
 Attempt to abuse an anonymous LDAP search against the domain controller.
 
@@ -64,25 +64,25 @@ Attempt to abuse an anonymous LDAP search against the domain controller.
 {% endstep %}
 
 {% step %}
-###
+#### ASREP-Roasting
 
 Check for users that do not require Kerberos pre-auth (ASREP-Roasting) to get password hash.
 {% endstep %}
 
 {% step %}
-###
+#### Kerbrute
 
 Use Kerbrute and wordlists to brute force usernames against DC.
 {% endstep %}
 
 {% step %}
-###
+#### Impacket
 
 Use Impackets lookupsid.py to discover users (works better with creds)
 {% endstep %}
 
 {% step %}
-###
+#### Enum
 
 Look for systems that can be exploited to gain SYSTEM level access.
 {% endstep %}
@@ -90,11 +90,24 @@ Look for systems that can be exploited to gain SYSTEM level access.
 
 ### User Foothold
 
-1. Use Responder/Inveigh on network interface to listen for NTLM users and hashes.
-   1. Attempt to crack hashes.
-2. attempt password spray on users identified during user identification.
-   1. attempt to gather password policy for organisation.
-   2. password spray using common passwords.
+{% stepper %}
+{% step %}
+#### Responder Analysis
+
+Use Responder/Inveigh on network interface to listen for NTLM users and hashes.
+
+1. Attempt to crack hashes.
+{% endstep %}
+
+{% step %}
+#### Password Spray
+
+Attempt password spray on users identified during user identification.
+
+1. attempt to gather password policy for organisation.
+2. password spray using common passwords.
+{% endstep %}
+{% endstepper %}
 
 ***
 
@@ -102,21 +115,50 @@ Look for systems that can be exploited to gain SYSTEM level access.
 
 ### Host Identification
 
-1. Run Bloodhound with discovered credentials.
-2. Use `ldapdomaindump` to identify all domain joined computers.
-3. Enumerate accessible shares on servers with CrackMapExec, SMBMap, PowerView or Snaffler.
+{% stepper %}
+{% step %}
+#### Bloodhound
+
+Run Bloodhound with discovered credentials.
+{% endstep %}
+
+{% step %}
+#### LDAP Domain Dump
+
+Use `ldapdomaindump` to identify all domain joined computers.
+{% endstep %}
+
+{% step %}
+#### Share Enumeration
+
+Enumerate accessible shares on servers with CrackMapExec, SMBMap, PowerView or Snaffler.
+{% endstep %}
+{% endstepper %}
 
 ### User Identificaiton
 
-1. Run Bloodhound with discovered credentials
-   1. Bloodhound.py
-   2. Bloodhound from windows
-2. Gather the domain password policy using the discovered credentails
-   1. Gather a list of Domain Admins or Privileged users using tools:
-      1. Windapsearch
-      2. powerview
-      3. bloodhound
-      4. ad powershell module
+{% stepper %}
+{% step %}
+#### Bloodhound
+
+Run Bloodhound with discovered credentials
+
+1. Bloodhound.py
+2. Bloodhound from windows
+{% endstep %}
+
+{% step %}
+#### Password Policy Enumeration
+
+Gather the domain password policy using the discovered credentails
+
+1. Gather a list of Domain Admins or Privileged users using tools:
+   1. Windapsearch
+   2. powerview
+   3. bloodhound
+   4. ad powershell module
+{% endstep %}
+{% endstepper %}
 
 ### Foothold Enumeration
 
