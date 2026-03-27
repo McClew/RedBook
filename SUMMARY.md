@@ -160,6 +160,7 @@
   * [Initial Access](field-manual/exploitation/initial-access/README.md)
     * [AS-REP Roasting](field-manual/exploitation/initial-access/as-rep-roasting.md)
   * [Man-in-the-Middle](field-manual/exploitation/man-in-the-middle/README.md)
+    * [IPv6 DNS Takeover](field-manual/exploitation/man-in-the-middle/ipv6-dns-takeover.md)
     * [LLMNR/NBT-NS Poisoning](field-manual/exploitation/man-in-the-middle/llmnr-nbt-ns-poisoning.md)
   * [Remote Code Execution](field-manual/exploitation/remote-code-execution.md)
   * [Web Attacks](field-manual/exploitation/web-attacks/README.md)
