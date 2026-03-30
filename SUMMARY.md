@@ -470,6 +470,7 @@
   * [Siemens](knowledge/ics-and-ot/siemens/README.md)
     * [S7-1500 PLCs](knowledge/ics-and-ot/siemens/s7-1500-plcs.md)
     * [Scalance Switches](knowledge/ics-and-ot/siemens/scalance-switches.md)
+    * [Safe Scanning (ICS/OT)](knowledge/ics-and-ot/siemens/safe-scanning-ics-ot.md)
 
 ## Play Books
 
