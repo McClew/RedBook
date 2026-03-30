@@ -76,7 +76,7 @@ The `-dw` flags help catch WPAD and DHCP-based requests which are common "easy w
 {% step %}
 ### Monitor for Hashes
 
-<figure><img src="../../../.gitbook/assets/image (64).png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../../../.gitbook/assets/responder_hashes.gif" alt=""><figcaption></figcaption></figure>
 
 The screen will light up with \[SMB] NTLMv2-SSP Hash when a user attempts to access a non-existent network share.
 {% endstep %}
