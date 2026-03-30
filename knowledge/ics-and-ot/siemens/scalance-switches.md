@@ -29,6 +29,50 @@ In an industrial hierarchy, Scalance switches act as the nervous system connecti
 
 ***
 
+## Quick Wins
+
+### Default Credentials
+
+`admin` / `admin`
+
+Since firmware updates around 2022-2024, Scalance switches force a password change upon the first login. However, if a switch has been "Factory Reset" but never re-configured, we may be able to log in with `admin/admin` and set our own password, effectively taking ownership of that network segment.
+
+## Port Mirroring
+
+If we gain access to the Scalance Web Based Management (WBM):
+
+We can configure any port to be a Monitor Port (SPAN). Mirror the traffic from a PLC port to the attacker hosts port. We can then capture the `S7CommPlus` traffic to look for credentials or analyse the industrial logic being sent to the machines.
+
+### SNMP
+
+Most Scalance switches ship with SNMP enabled for monitoring.
+
+Default Communities: `public` (Read) and `private` (Write).
+
+Use `snmpwalk` to pull the ARP Table and CAM Table. This allows us to map exactly which PLC is plugged into which port without ever touching the PLC itself.
+
+**Credential Leak**_:_ In some firmware versions, the configuration (including obfuscated passwords) can be pulled via specific SNMP OIDs.
+
+### LLDP
+
+Over LLDP (Link Layer Discovery Protocol), Scalance switches broadcast their identity every 30 seconds.&#x20;
+
+{% code overflow="wrap" %}
+```bash
+tcpdump -i eth0 'ether proto 0x88cc'
+```
+{% endcode %}
+
+Use the above command to see the switch's IP address, management VLAN, and model number without sending a single packet.
+
+### DCP
+
+DCP (Discovery & Configuration Protocol): This is a Siemens-specific Layer 2 protocol.
+
+We can send a "DCP Identify" multicast packet. Every Scalance switch on the segment will shout back its IP, MAC, and "Name of Station." It is an unauthenticated protocol.
+
+***
+
 ## Key Characteristics
 
 * **Profinet Optimised:** They prioritise industrial traffic over standard TCP/IP to ensure that a motor stop command arrives in milliseconds, even if the network is busy.
