@@ -32,11 +32,11 @@ Instead of actively responding to requests and poisoning the network, in 'Analys
 
 **Why use it?**
 
-**Stealth:** It produces zero network noise. You can gauge the volume of traffic without alerting an IDS/EDR.
+**Stealth:** It produces zero network noise. We can gauge the volume of traffic without alerting an IDS/EDR.
 
-**Scoping:** It tells you which hostnames are being looked for most often.
+**Scoping:** It tells us which hostnames are being looked for most often.
 
-**Safety:** It ensures you don't accidentally poison a sensitive server or a production-critical service before you’ve cleared it with the client.
+**Safety:** It ensures we don't accidentally poison a sensitive server or a production-critical service before we've cleared it with the client.
 
 ***
 
