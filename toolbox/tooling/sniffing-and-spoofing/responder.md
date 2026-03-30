@@ -58,7 +58,7 @@ Run:
 sudo responder -I eth0 -A
 ```
 
-Wait 5–10 minutes to see if the network is "chatty."
+Wait 5–10 minutes to see if the network is "chatty", if responder shows network "chatter" it means the fallback mechanisms we are attempting to target are actively in use.
 {% endstep %}
 
 {% step %}
