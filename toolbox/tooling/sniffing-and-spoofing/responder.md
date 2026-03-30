@@ -94,11 +94,35 @@ The hashes are automatically saved in `/usr/share/responder/logs/`. We can then 
 
 ### Network Congestion
 
-In very large flat networks, Responder can generate a massive amount of traffic.
+In very large flat networks, Responder can generate a massive amount of traffic, potentially creating network instability and affecting Availability. This occurs when the tool attempts to answre every broadcast request is finds, potentially overwhelming network segments.
+
+#### Risky Activity
+
+**The -d (DHCP) Flag:** This is the highest risk. By starting a rogue DHCP server, we are competing with the legitimate server. In a large network, this can lead to "IP address exhaustion" or cause clients to lose connectivity entirely if they accept the (likely non-functional) gateway settings.
+
+**The -P / -ProxyAuth Flag:** When we force proxy authentication, every browser on every machine may suddenly pop up a credential prompt. On a 1,000-user network, this creates a massive spike in HTTP/S traffic to the attacker machine and a 100% chance of being reported to the helpdesk within minutes.
+
+**Aggressive WPAD Poisoning (-w):** Since WPAD is requested by almost every Windows process that accesses the web, responding to every `wpad.dat` request in a massive subnet can create a bottleneck at our network interface, dropping legitimate traffic.
+
+#### Mitigations
+
+**Passive First:** Always run in Analyse Mode (`-A`) first. If we see the screen scrolling so fast that it is unreadable, the network is too large to target the entire network indiscriminately.
+
+**Targeted Poisoning (The -e Flag):** Instead of poisoning everyone, use the `-e` (External IP) flag to limit Responder's answers to specific IP addresses or ranges we have identified as high-value.
+
+{% code title="Targeted Responder execution against 192.168.1.50" %}
+```bash
+sudo responder -I eth0 -e 192.168.1.50
+```
+{% endcode %}
+
+**Disable Heavy Responders:** Edit the `Responder.conf` file to turn off specific listeners (like SQL or FTP) if, for example, we are only interested in SMB hashes. This reduces the number of ports your machine is "shouting" on.
+
+**Avoid DHCP/DNS Spoofing:** Unless specifically requested, avoid the `-d` flag in large environments. It is too disruptive for a standard uncredentialed test.
 
 ### The "Account Lockout" Trap
 
-If you use the captured hashes in an automated tool (like [crackmapexec.md](../post-exploitation/crackmapexec.md "mention")) against the whole domain, you might trigger account lockout policies.
+If we use the captured hashes in an automated tool (like [crackmapexec.md](../post-exploitation/crackmapexec.md "mention")) against the whole domain, it might trigger account lockout policies.
 
 ### Service Disruption
 
