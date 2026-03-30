@@ -464,6 +464,13 @@
     * [Linux Privilege Escalation](toolbox/snippets/vulnerability-exploit-scripts/linux-privilege-escalation/README.md)
       * [Screen\_Exploit\_POC.sh](toolbox/snippets/vulnerability-exploit-scripts/linux-privilege-escalation/screen_exploit_poc.sh.md)
 
+## Knowledge
+
+* [ICS & OT](knowledge/ics-and-ot/README.md)
+  * [Siemens](knowledge/ics-and-ot/siemens/README.md)
+    * [S7-1500 PLCs](knowledge/ics-and-ot/siemens/s7-1500-plcs.md)
+    * [Scalance Switches](knowledge/ics-and-ot/siemens/scalance-switches.md)
+
 ## Play Books
 
 * [Note Taking](play-books/note-taking.md)
