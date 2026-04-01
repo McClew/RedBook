@@ -463,6 +463,7 @@
   * [Vulnerability Exploit Scripts](toolbox/snippets/vulnerability-exploit-scripts/README.md)
     * [Linux Privilege Escalation](toolbox/snippets/vulnerability-exploit-scripts/linux-privilege-escalation/README.md)
       * [Screen\_Exploit\_POC.sh](toolbox/snippets/vulnerability-exploit-scripts/linux-privilege-escalation/screen_exploit_poc.sh.md)
+* [Bookcase](toolbox/bookcase.md)
 
 ## Knowledge
 
