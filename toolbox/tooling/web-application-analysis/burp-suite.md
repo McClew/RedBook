@@ -41,6 +41,14 @@ The core of Burp Suite, allowing you to intercept and modify traffic.
 * **Purpose:** An automation tool used to send a large number of customised requests.
 * **Use Case:** Brute-forcing login credentials, fuzzing API endpoints, or testing for rate limiting.
 
+#### Attack Types
+
+| **Sniper** (Default) | Takes a single list of payloads. It iterates through the list, testing **one position at a time**. It finishes position 1, then moves to position 2, etc. | Fuzzing multiple fields individually to see if any specific field breaks.                                          |
+| -------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| **Battering Ram**    | Takes a single list of payloads. It places the **same payload into all positions simultaneously**.                                                        | Testing if a specific value needs to be identical across multiple fields (e.g., user ID repeated in URL and Body). |
+| **Pitchfork**        | Uses multiple payload lists (one for each position). It iterates through them **in parallel** (Payload A1 with Payload B1, then A2 with B2).              | Testing known pairs, like a specific username with its specific password.                                          |
+| **Cluster Bomb**     | Uses multiple payload lists. It tests **every possible combination** of all payloads (A1+B1, A1+B2, A2+B1...).                                            | Brute-forcing credentials (trying every password against every username).                                          |
+
 ### Repeater
 
 * **Purpose:** A manual testing interface.
