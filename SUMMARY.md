@@ -381,6 +381,7 @@
   * [Web Application Analysis](toolbox/tooling/web-application-analysis/README.md)
     * [Aquatone](toolbox/tooling/web-application-analysis/aquatone.md)
     * [Burp Suite](toolbox/tooling/web-application-analysis/burp-suite.md)
+    * [Caido](toolbox/tooling/web-application-analysis/caido.md)
     * [droopescan](toolbox/tooling/web-application-analysis/droopescan.md)
     * [EyeWitness](toolbox/tooling/web-application-analysis/eyewitness.md)
     * [Ffuf](toolbox/tooling/web-application-analysis/ffuf.md)
