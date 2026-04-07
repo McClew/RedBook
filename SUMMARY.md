@@ -445,6 +445,7 @@
     * [Socat](toolbox/tooling/network-tools/socat.md)
     * [SocksOverRDP](toolbox/tooling/network-tools/socksoverrdp.md)
   * [Utilities](toolbox/tooling/utilities/README.md)
+    * [Flameshot](toolbox/tooling/utilities/flameshot.md)
     * [Tmux Logging](toolbox/tooling/utilities/tmux-logging.md)
     * [Vim](toolbox/tooling/utilities/vim.md)
 * [Snippets](toolbox/snippets/README.md)
