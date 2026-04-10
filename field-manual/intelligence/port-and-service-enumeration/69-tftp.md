@@ -8,7 +8,9 @@ Trivial File Transfer Protocol (TFTP) is simpler than FTP and performs file tran
 
 It does not support protected login via passwords and sets limits on access based solely on the read and write permissions of a file in the operating system. Because of the lack of security, TFTP, unlike FTP, may only be used in local and protected networks.
 
-Let us take a look at a few commands of TFTP:
+***
+
+## Cheatsheet
 
 | **Commands** | **Description**                                                                                                                        |
 | ------------ | -------------------------------------------------------------------------------------------------------------------------------------- |
@@ -20,3 +22,9 @@ Let us take a look at a few commands of TFTP:
 | `verbose`    | Turns verbose mode, which displays additional information during file transfer, on or off.                                             |
 
 Unlike the FTP client, TFTP does not have directory listing functionality.
+
+***
+
+## Default Directory
+
+The default system folder for TFTP file storage on Linux systems is generally `/var/lib/tftpboot/`. While this is the standard location for servers like `tftpd-hpa` on Ubuntu/Debian, other systems might use `/tftpboot/` or `/etc/tftpboot/` depending on the configuration.
