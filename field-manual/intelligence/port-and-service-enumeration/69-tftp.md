@@ -25,6 +25,16 @@ Unlike the FTP client, TFTP does not have directory listing functionality.
 
 ***
 
+## Basic Use
+
+{% code title="Get File" %}
+```bash
+tftp -i <TARGET_IP> get <FILE>
+```
+{% endcode %}
+
+***
+
 ## Default Directory
 
 The default system folder for TFTP file storage on Linux systems is generally `/var/lib/tftpboot/`. While this is the standard location for servers like `tftpd-hpa` on Ubuntu/Debian, other systems might use `/tftpboot/` or `/etc/tftpboot/` depending on the configuration.
