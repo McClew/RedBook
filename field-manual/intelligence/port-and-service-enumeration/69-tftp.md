@@ -27,9 +27,9 @@ Unlike the FTP client, TFTP does not have directory listing functionality.
 
 ## Basic Use
 
-{% code title="Get File" %}
+{% code title="Connect to service" %}
 ```bash
-tftp -i <TARGET_IP> get <FILE>
+tftp <TARGET_IP>
 ```
 {% endcode %}
 
