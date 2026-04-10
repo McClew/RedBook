@@ -33,6 +33,12 @@ tftp <TARGET_IP>
 ```
 {% endcode %}
 
+{% code title="Upload file" %}
+```bash
+tftp <TARGET_IP> -c put <LOCAL_FILE> <REMOTE_FILE_NAME>
+```
+{% endcode %}
+
 ***
 
 ## Default Directory
