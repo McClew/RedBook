@@ -455,6 +455,7 @@
     * [Vim](toolbox/tooling/utilities/vim.md)
 * [Snippets](toolbox/snippets/README.md)
   * [Enumeration Scripts](toolbox/snippets/enumeration-scripts/README.md)
+    * [Linux Ping Sweep](toolbox/snippets/enumeration-scripts/linux-ping-sweep.md)
     * [DNS Lookup Brute Force](toolbox/snippets/enumeration-scripts/dns-lookup-brute-force.md)
     * [DNS Reverse Lookup Brute Force](toolbox/snippets/enumeration-scripts/dns-reverse-lookup-brute-force.md)
     * [Encrypted File Hunting Command](toolbox/snippets/enumeration-scripts/encrypted-file-hunting-command.md)
