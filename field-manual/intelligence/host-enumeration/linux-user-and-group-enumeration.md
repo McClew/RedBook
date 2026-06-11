@@ -1,3 +1,24 @@
+---
+layout:
+  width: default
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: false
+  metadata:
+    visible: true
+  tags:
+    visible: true
+  actions:
+    visible: true
+---
+
 # Linux User & Group Enumeration
 
 ## Cheatsheet
@@ -217,27 +238,21 @@ find / -path /proc -prune -o -type d -perm -o+w 2>/dev/null
 
 ### Writeable Files
 
-Are any scripts or configuration files globally writable? While altering configuration files can be extremely destructive, there may be instances where a minor modification can open up further access. Also, any scripts that are run as root using cron jobs can be modified slightly to append a command.
+We scan the filesystem for files that grant write access to our current user or group. While checking for globally writable (world-writable) files across the entire system is essential, targeting critical directories like `/etc` or `/opt` often yields more immediate results.
 
-#### Finding Writable Files
+We can look for globally writable files across the system while excluding virtual filesystems to keep our results relevant:
 
-{% code title="Command" %}
 ```bash
 find / -path /proc -prune -o -type f -perm -o+w 2>/dev/null
 ```
-{% endcode %}
 
-{% code title="Example Output" %}
+Alternatively, to focus specifically on configurations within `/etc` that our current user has permission to modify, we can use:
+
 ```bash
-/etc/cron.daily/backup
-/dmz-backups/backup.sh
-/proc
-/sys/fs/cgroup/memory/init.scope/cgroup.event_control
-<SNIP>
-/home/backupsvc/backup.sh
-<SNIP>
+find /etc -writable 2>/dev/null | head -20
 ```
-{% endcode %}
+
+> Key Takeaway: Writable configuration files (`.conf`, `.ini`, `.sh`) must always be thoroughly analysed. If a file is writable by our user and processed or sourced by a root-run service, it represents a primary target for command injection.
 
 ***
 
