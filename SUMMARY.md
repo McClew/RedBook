@@ -151,6 +151,7 @@
   * [Authentication Bypass](field-manual/exploitation/authentication-bypass.md)
   * [Buffer Overflow](field-manual/exploitation/buffer-overflow.md)
   * [Brute-Force](field-manual/exploitation/brute-force/README.md)
+    * [HTTP](field-manual/exploitation/brute-force/http.md)
     * [RDP](field-manual/exploitation/brute-force/rdp.md)
     * [SMB](field-manual/exploitation/brute-force/smb.md)
     * [SSH](field-manual/exploitation/brute-force/ssh.md)
