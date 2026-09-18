@@ -120,15 +120,6 @@ _Generated from a full review of the Red Book against the HTB Academy "Penetrati
 | ------------------- | ---------- | ------------------------------------------------------------------------- | -------- | ------ |
 | Legacy Exploitation | Blank Page | field-manual/post-exploitation/privilege-escalation-1/legacy-exploitation | Medium   | To Do  |
 
-### Documentation & Reporting
-
-| Topic            | Type       | Path                                                         | Priority | Status |
-| ---------------- | ---------- | ------------------------------------------------------------ | -------- | ------ |
-| Proof-of-Concept | Blank Page | field-manual/post-engagement/report-writing/proof-of-concept | High     | To Do  |
-| QA Checklist     | Blank Page | field-manual/post-engagement/report-writing/qa-checklist     | High     | To Do  |
-| Executive Report | Blank Page | field-manual/post-engagement/executive-report                | High     | To Do  |
-| Technical Report | Blank Page | field-manual/post-engagement/technical-report                | High     | To Do  |
-
 ### Attacking Enterprise Networks
 
 | Topic             | Type       | Path                                                   | Priority | Status |
