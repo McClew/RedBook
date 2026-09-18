@@ -42,7 +42,6 @@ _Generated from a full review of the Red Book against the HTB Academy "Penetrati
 | Topic                                                                                   | Type          | Path                                                           | Priority | Status |
 | --------------------------------------------------------------------------------------- | ------------- | -------------------------------------------------------------- | -------- | ------ |
 | Lateral Movement                                                                        | Blank Page    | field-manual/post-exploitation/lateral-movement                | High     | To Do  |
-| Mimikatz                                                                                | Blank Page    | toolbox/tooling/post-exploitation/mimikatz                     | High     | To Do  |
 | PsExec                                                                                  | Blank Page    | toolbox/tooling/post-exploitation/psexec                       | High     | To Do  |
 | Active Directory Certificate Services (ADCS) attacks (ESC1-ESC8, Certipy)               | Missing Topic | not yet created                                                | High     | To Do  |
 | Kerberos Delegation Abuse (unconstrained / constrained / RBCD)                          | Missing Topic | not yet created                                                | High     | To Do  |
