@@ -64,10 +64,9 @@ _Generated from a full review of the Red Book against the HTB Academy "Penetrati
 
 ### Vulnerability Assessment
 
-| Topic                  | Type       | Path                                            | Priority | Status |
-| ---------------------- | ---------- | ----------------------------------------------- | -------- | ------ |
-| Vulnerability Scanning | Blank Page | field-manual/analysis/vulnerability-scanning    | High     | To Do  |
-| Nuclei                 | Blank Page | toolbox/tooling/web-application-analysis/nuclei | Medium   | To Do  |
+| Topic  | Type       | Path                                            | Priority | Status |
+| ------ | ---------- | ----------------------------------------------- | -------- | ------ |
+| Nuclei | Blank Page | toolbox/tooling/web-application-analysis/nuclei | Medium   | To Do  |
 
 ### Using the Metasploit Framework
 
