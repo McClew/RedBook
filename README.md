@@ -54,12 +54,6 @@ _Generated from a full review of the Red Book against the HTB Academy "Penetrati
 | Domain Trust Abuse (parent/child, cross-forest, SIDHistory/ExtraSIDs)                   | Missing Topic | not yet created                                                | Medium   | To Do  |
 | Group Policy Object (GPO) Abuse                                                         | Missing Topic | not yet created                                                | Medium   | To Do  |
 
-### SQL Injection Fundamentals
-
-| Topic            | Type       | Path                                                   | Priority | Status |
-| ---------------- | ---------- | ------------------------------------------------------ | -------- | ------ |
-| NoSQLi Injection | Blank Page | field-manual/exploitation/web-attacks/nosqli-injection | Low      | To Do  |
-
 ### Cross-Site Scripting (XSS)
 
 | Topic             | Type       | Path                                                                             | Priority | Status |
