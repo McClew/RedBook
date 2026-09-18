@@ -1,3 +1,26 @@
+---
+layout:
+  width: default
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: false
+  metadata:
+    visible: true
+  tags:
+    visible: true
+  actions:
+    visible: true
+  anchors:
+    visible: true
+---
+
 # Database Enumeration
 
 Enumeration is the central stage of an SQL Injection attack, following the successful detection and confirmation of a vulnerability. This process involves searching for and retrieving (exfiltrating) all available information from the targeted database.

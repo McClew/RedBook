@@ -1,3 +1,26 @@
+---
+layout:
+  width: default
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: false
+  metadata:
+    visible: true
+  tags:
+    visible: true
+  actions:
+    visible: true
+  anchors:
+    visible: true
+---
+
 # JohnTheRipper
 
 **John the Ripper** (aka. **JtR** aka. **john**) is a well-known penetration testing tool used for cracking passwords through various attacks including brute-force and dictionary.

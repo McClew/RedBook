@@ -1,3 +1,26 @@
+---
+layout:
+  width: default
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: false
+  metadata:
+    visible: true
+  tags:
+    visible: true
+  actions:
+    visible: true
+  anchors:
+    visible: true
+---
+
 # CPTS Exam Tactics & Survival Guide
 
 This article provides essential tips and tactical advice for navigating the Hack The Box Certified Penetration Testing Specialist (CPTS) examination, focusing on in-exam execution, overcoming roadblocks, and securing flags.

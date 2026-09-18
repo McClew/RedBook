@@ -1,5 +1,25 @@
 ---
 icon: ethernet
+layout:
+  width: default
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: false
+  metadata:
+    visible: true
+  tags:
+    visible: true
+  actions:
+    visible: true
+  anchors:
+    visible: true
 ---
 
 # 21 - FTP
@@ -120,7 +140,7 @@ STAT
 
 _anonymous : anonymous_\
 \_anonymous :\
-&#xNAN;_\_ftp : ftp_
+_\_ftp : ftp_
 
 ```bash
 ftp <IP>

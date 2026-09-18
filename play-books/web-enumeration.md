@@ -16,6 +16,10 @@ layout:
     visible: true
   tags:
     visible: true
+  actions:
+    visible: true
+  anchors:
+    visible: true
 ---
 
 # Web Enumeration
@@ -107,7 +111,7 @@ Check `robots.txt` and `sitemap.xml` for hidden directories or restricted paths.
 {% step %}
 #### Fuzzing
 
-Use tools like [ffuf.md](../toolbox/tooling/web-application-analysis/ffuf.md "mention") and [gobuster.md](../toolbox/tooling/information-gathering/gobuster.md "mention") (see [Broken link](/broken/pages/ro71vMH77bA4elk2JCF3 "mention") > [information-gathering](../toolbox/tooling/information-gathering/ "mention") for more) to find hidden files, folders and pages not directly linked on the site.
+Use tools like [ffuf.md](../toolbox/tooling/web-application-analysis/ffuf.md "mention") and [gobuster.md](../toolbox/tooling/information-gathering/gobuster.md "mention") (see [Toolbox](https://app.gitbook.com/s/SAR7QsQWxESHXT5u5VxR/toolbox "mention") > [information-gathering](../toolbox/tooling/information-gathering/ "mention") for more) to find hidden files, folders and pages not directly linked on the site.
 
 With the technology of the site analysed, we can fuzz using specific file extensions such as `.php`.
 
@@ -126,7 +130,7 @@ With the technology of the site analysed, we can fuzz using specific file extens
 {% step %}
 #### Automated Mapping
 
-[Broken link](/broken/pages/ro71vMH77bA4elk2JCF3 "mention") > [tooling](../toolbox/tooling/ "mention") > [web-application-analysis](../toolbox/tooling/web-application-analysis/ "mention")
+[Toolbox](https://app.gitbook.com/s/SAR7QsQWxESHXT5u5VxR/toolbox "mention") > [tooling](../toolbox/tooling/ "mention") > [web-application-analysis](../toolbox/tooling/web-application-analysis/ "mention")
 
 Run tools like [eyewitness.md](../toolbox/tooling/web-application-analysis/eyewitness.md "mention") to generate a visual gallery of web interfaces for easy identification of high-value targets.
 
@@ -138,7 +142,7 @@ Run tools like [eyewitness.md](../toolbox/tooling/web-application-analysis/eyewi
 {% step %}
 #### Automated Auditing
 
-[Broken link](/broken/pages/ro71vMH77bA4elk2JCF3 "mention") > [tooling](../toolbox/tooling/ "mention") > [vulnerability-analysis](../toolbox/tooling/vulnerability-analysis/ "mention")
+[Toolbox](https://app.gitbook.com/s/SAR7QsQWxESHXT5u5VxR/toolbox "mention") > [tooling](../toolbox/tooling/ "mention") > [vulnerability-analysis](../toolbox/tooling/vulnerability-analysis/ "mention")
 
 Utilise tools such as [nikto.md](../toolbox/tooling/vulnerability-analysis/nikto.md "mention") against specific targets to identify low-hanging fruit such as common misconfigurations.
 
@@ -150,7 +154,7 @@ Utilise tools such as [nikto.md](../toolbox/tooling/vulnerability-analysis/nikto
 {% step %}
 #### Automated Defence Discovery
 
-[Broken link](/broken/pages/ro71vMH77bA4elk2JCF3 "mention") > [tooling](../toolbox/tooling/ "mention") > [web-application-analysis](../toolbox/tooling/web-application-analysis/ "mention")
+[Toolbox](https://app.gitbook.com/s/SAR7QsQWxESHXT5u5VxR/toolbox "mention") > [tooling](../toolbox/tooling/ "mention") > [web-application-analysis](../toolbox/tooling/web-application-analysis/ "mention")
 
 Use automated tools such as [wafw00f.md](../toolbox/tooling/web-application-analysis/wafw00f.md "mention") to identify and fingerprint Web Application Firewalls (WAF) that are active on the target.
 

@@ -62,25 +62,11 @@ _Generated from a full review of the Red Book against the HTB Academy "Penetrati
 | 123 - NTP                     | Blank Page | field-manual/intelligence/port-and-service-enumeration/123-ntp                  | Low      | To Do  |
 | 194, 6667, 6660-7000 - IRC    | Blank Page | field-manual/intelligence/port-and-service-enumeration/194-6667-6660-7000-irc   | Low      | To Do  |
 
-### Vulnerability Assessment
-
-| Topic  | Type       | Path                                            | Priority | Status |
-| ------ | ---------- | ----------------------------------------------- | -------- | ------ |
-| Nuclei | Blank Page | toolbox/tooling/web-application-analysis/nuclei | Medium   | To Do  |
-
 ### Password Attacks
 
-| Topic               | Type       | Path                                                          | Priority | Status |
-| ------------------- | ---------- | ------------------------------------------------------------- | -------- | ------ |
-| Password Extraction | Blank Page | field-manual/post-exploitation/password-extraction            | High     | To Do  |
-| Custom Rules        | Blank Page | field-manual/post-exploitation/password-cracking/custom-rules | Medium   | To Do  |
-
-### Login Brute Forcing
-
-| Topic                                        | Type          | Path                                   | Priority | Status |
-| -------------------------------------------- | ------------- | -------------------------------------- | -------- | ------ |
-| Hydra                                        | Blank Page    | toolbox/tooling/password-attacks/hydra | High     | To Do  |
-| Medusa (brute-force tool, complements Hydra) | Missing Topic | not yet created                        | Low      | To Do  |
+| Topic               | Type       | Path                                               | Priority | Status |
+| ------------------- | ---------- | -------------------------------------------------- | -------- | ------ |
+| Password Extraction | Blank Page | field-manual/post-exploitation/password-extraction | High     | To Do  |
 
 ### Pivoting, Tunneling, and Port Forwarding
 

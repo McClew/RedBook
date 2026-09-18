@@ -1,3 +1,26 @@
+---
+layout:
+  width: default
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: false
+  metadata:
+    visible: true
+  tags:
+    visible: true
+  actions:
+    visible: true
+  anchors:
+    visible: true
+---
+
 # Information Gathering
 
 <table><thead><tr><th width="219">Tool</th><th>Capabilities</th></tr></thead><tbody><tr><td><a data-mention href="dig.md">dig.md</a></td><td><ul><li>DNS Enumeration</li></ul></td></tr><tr><td><a data-mention href="dirbuster.md">dirbuster.md</a></td><td><ul><li>Fuzzer</li></ul></td></tr><tr><td><a data-mention href="dnsenum.md">dnsenum.md</a></td><td><ul><li>DNS Enumeration</li></ul></td></tr><tr><td><a data-mention href="dnsdumpster.md">dnsdumpster.md</a></td><td><ul><li>OSINT</li><li>DNS Enumeration</li></ul></td></tr><tr><td><a data-mention href="fierce.md">fierce.md</a></td><td><ul><li>DNS Enumeration</li></ul></td></tr><tr><td><a data-mention href="gobuster.md">gobuster.md</a></td><td><ul><li>Fuzzer</li></ul></td></tr><tr><td><a data-mention href="subbrute.md">subbrute.md</a></td><td><ul><li>DNS Enumeration</li></ul></td></tr><tr><td><a data-mention href="subfinder.md">subfinder.md</a></td><td><ul><li>DNS Enumeration</li></ul></td></tr><tr><td><a data-mention href="sublist3r.md">sublist3r.md</a></td><td><ul><li>DNS Enumeration</li></ul></td></tr></tbody></table>

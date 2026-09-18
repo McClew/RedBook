@@ -1,3 +1,26 @@
+---
+layout:
+  width: default
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: false
+  metadata:
+    visible: true
+  tags:
+    visible: true
+  actions:
+    visible: true
+  anchors:
+    visible: true
+---
+
 # Responder
 
 Responder is an [llmnr-nbt-ns-poisoning.md](../../../field-manual/exploitation/man-in-the-middle/llmnr-nbt-ns-poisoning.md "mention") and [mdns-poisoning.md](../../../field-manual/exploitation/man-in-the-middle/mdns-poisoning.md "mention") poisoner, with built-in HTTP/SMB/MSSQL/FTP/LDAP rogue authentication server supporting NTLMv1/NTLMv2/LMv2, Extended Security NTLMSSP and Basic HTTP authentication.

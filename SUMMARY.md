@@ -413,6 +413,7 @@
     * [JohnTheRipper](toolbox/tooling/password-attacks/johntheripper/README.md)
       * [2john](toolbox/tooling/password-attacks/johntheripper/2john.md)
     * [joomla-bruteforce](toolbox/tooling/password-attacks/joomla-bruteforce.md)
+    * [Medusa](toolbox/tooling/password-attacks/medusa.md)
   * [Wireless Attacks](toolbox/tooling/wireless-attacks.md)
   * [Exploitation Tools](toolbox/tooling/exploitation-tools/README.md)
     * [BloodHound](toolbox/tooling/exploitation-tools/bloodhound.md)

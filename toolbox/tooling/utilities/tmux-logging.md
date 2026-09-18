@@ -1,3 +1,26 @@
+---
+layout:
+  width: default
+  title:
+    visible: true
+  description:
+    visible: false
+  tableOfContents:
+    visible: true
+  outline:
+    visible: true
+  pagination:
+    visible: false
+  metadata:
+    visible: true
+  tags:
+    visible: true
+  actions:
+    visible: true
+  anchors:
+    visible: true
+---
+
 # Tmux Logging
 
 Tmux Logging is a tool that will capture all of a terminals acitivity within a Tmux session and saves it to a log file. See [note-taking.md](../../../field-manual/pre-engagement/note-taking.md "mention") for further information.
