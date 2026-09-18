@@ -62,19 +62,6 @@ _Generated from a full review of the Red Book against the HTB Academy "Penetrati
 | 123 - NTP                     | Blank Page | field-manual/intelligence/port-and-service-enumeration/123-ntp                  | Low      | To Do  |
 | 194, 6667, 6660-7000 - IRC    | Blank Page | field-manual/intelligence/port-and-service-enumeration/194-6667-6660-7000-irc   | Low      | To Do  |
 
-### Password Attacks
-
-| Topic             | Type       | Path                                             | Priority | Status |
-| ----------------- | ---------- | ------------------------------------------------ | -------- | ------ |
-| Data Exfiltration | Blank Page | field-manual/post-exploitation/data-exfiltration | High     | To Do  |
-
-### Pivoting, Tunneling, and Port Forwarding
-
-| Topic       | Type       | Path                                      | Priority | Status |
-| ----------- | ---------- | ----------------------------------------- | -------- | ------ |
-| Proxychains | Blank Page | toolbox/tooling/network-tools/proxychains | High     | To Do  |
-| Socat       | Blank Page | toolbox/tooling/network-tools/socat       | Medium   | To Do  |
-
 ### Active Directory Enumeration & Attacks
 
 | Topic                                                                                   | Type          | Path                                                           | Priority | Status |
@@ -92,13 +79,6 @@ _Generated from a full review of the Red Book against the HTB Academy "Penetrati
 | WPAD Poisoning                                                                          | Blank Page    | field-manual/exploitation/man-in-the-middle/wpad-poisoning     | Medium   | To Do  |
 | Domain Trust Abuse (parent/child, cross-forest, SIDHistory/ExtraSIDs)                   | Missing Topic | not yet created                                                | Medium   | To Do  |
 | Group Policy Object (GPO) Abuse                                                         | Missing Topic | not yet created                                                | Medium   | To Do  |
-
-### Attacking Web Applications with Ffuf
-
-| Topic     | Type       | Path                                            | Priority | Status |
-| --------- | ---------- | ----------------------------------------------- | -------- | ------ |
-| Gobuster  | Blank Page | toolbox/tooling/information-gathering/gobuster  | Medium   | To Do  |
-| Dirbuster | Blank Page | toolbox/tooling/information-gathering/dirbuster | Low      | To Do  |
 
 ### SQL Injection Fundamentals
 

@@ -23,7 +23,7 @@ layout:
 
 # Proxychains
 
-Proxychains forces the network traffic of any dynamically linked TCP application through a chain of one or more proxies — SOCKS4, SOCKS5 or HTTP — without needing native proxy support in the application itself. It's the tool we reach for once we have a SOCKS listener up (via Chisel or Ligolo-ng, or a plain SSH dynamic port forward) and need to run ordinary tools like `nmap`, `smbclient` or `xfreerdp` through it.
+Proxychains forces the network traffic of any dynamically linked TCP application through a chain of one or more proxies - SOCKS4, SOCKS5 or HTTP - without needing native proxy support in the application itself. It's the tool we reach for once we have a SOCKS listener up (via [chisel.md](chisel.md "mention") or [ligolo-ng.md](ligolo-ng.md "mention"), or a plain SSH dynamic port forward) and need to run ordinary tools like [nmap](../information-gathering/network-enumeration/nmap/ "mention"), [smbclient.md](../information-gathering/service-enumeration/smbclient.md "mention") or `xfreerdp` through it.
 
 {% hint style="info" %}
 #### Download & Install
@@ -123,9 +123,3 @@ DNS lookups aren't proxied by default and can leak straight from our attack host
 
 Chained connections are inherently slower than direct ones. If we're seeing frequent timeouts with `nmap`, drop the timing template down a notch (`-T2`) rather than fighting Proxychains' own `tcp_read_time_out` / `tcp_connect_time_out` values.
 {% endhint %}
-
-***
-
-## Resources
-
-[https://github.com/haad/proxychains-ng](https://github.com/haad/proxychains-ng)

