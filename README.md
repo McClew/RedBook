@@ -51,8 +51,6 @@ _Generated from a full review of the Red Book against the HTB Academy "Penetrati
 | 500 - IPsec/IKE VPN           | Blank Page | field-manual/intelligence/port-and-service-enumeration/500-ipsec-ike-vpn        | Medium   | To Do  |
 | 873 - Rsync                   | Blank Page | field-manual/intelligence/port-and-service-enumeration/873-rsync                | Medium   | To Do  |
 | 27017, 27018 - MongoDB        | Blank Page | field-manual/intelligence/port-and-service-enumeration/27017-27018-mongodb      | Medium   | To Do  |
-| enum4linux                    | Blank Page | toolbox/tooling/information-gathering/linux-enumeration/enum4linux              | Medium   | To Do  |
-| HUMINT                        | Blank Page | field-manual/intelligence/humint                                                | Low      | To Do  |
 | 7 - Echo                      | Blank Page | field-manual/intelligence/port-and-service-enumeration/7-echo                   | Low      | To Do  |
 | 43 - WHOIS                    | Blank Page | field-manual/intelligence/port-and-service-enumeration/43-whois                 | Low      | To Do  |
 | 49 - TACACS+                  | Blank Page | field-manual/intelligence/port-and-service-enumeration/49-tacacs+               | Low      | To Do  |

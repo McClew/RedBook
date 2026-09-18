@@ -24,13 +24,13 @@ layout:
 
 # QA Checklist
 
-Before a report goes out the door, run it through this checklist. A single sloppy screenshot, an inconsistent severity rating, or a leftover reference to a different client can undermine confidence in an otherwise excellent assessment — this is the last line of defence before the client sees it.
+Before a report goes out the door, run it through this checklist. A single sloppy screenshot, an inconsistent severity rating, or a leftover reference to a different client can undermine confidence in an otherwise excellent assessment - this is the last line of defence before the client sees it.
 
 ***
 
 ## Content & Accuracy
 
-* [ ] Every finding maps to specific in-scope hosts, URLs, or systems — nothing out of scope has slipped in
+* [ ] Every finding maps to specific in-scope hosts, URLs, or systems - nothing out of scope has slipped in
 * [ ] Severity ratings are consistent finding-to-finding and follow the criteria set out in Vulnerability Classification & Risk Quantification
 * [ ] Every finding includes: description, impact, affected systems, recommendation, reference links, and reproduction steps/evidence
 * [ ] Every item in the Recommendations Summary maps back to an actual finding later in the report
@@ -56,14 +56,14 @@ Before a report goes out the door, run it through this checklist. A single slopp
 * [ ] The Executive Summary contains no acronyms, protocol names, or unexplained jargon
 * [ ] Claims are appropriately qualified where you're inferring rather than certain ("showed no indication of detecting" rather than "did not detect")
 * [ ] No specific commercial vendor names are recommended, per the Executive Summary's "Do Not" guidance
-* [ ] Tone is constructive throughout — call out gaps in process, not people
+* [ ] Tone is constructive throughout - call out gaps in process, not people
 
 ## Formatting & Delivery
 
 * [ ] Table of contents matches the actual section headings and page numbers
 * [ ] Heading styles, fonts, and numbering are consistent throughout
 * [ ] Every appendix referenced in-line actually exists and contains the right data
-* [ ] Client name and logo are correct everywhere — a leftover reference to a previous client is one of the fastest ways to lose credibility
+* [ ] Client name and logo are correct everywhere - a leftover reference to a previous client is one of the fastest ways to lose credibility
 * [ ] The report has been spell-checked and read aloud at least once by someone other than the author
 * [ ] The final exported PDF opens cleanly and images haven't been compressed into illegibility
 

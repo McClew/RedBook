@@ -24,13 +24,13 @@ layout:
 
 # Technical Report
 
-The Technical Report is the primary, comprehensive deliverable of an engagement — everything the client's technical teams need to understand, reproduce, and remediate every issue found. Every other page in Documentation & Reporting exists to feed into this document.
+The Technical Report is the primary, comprehensive deliverable of an engagement - everything the client's technical teams need to understand, reproduce, and remediate every issue found. Every other page in Documentation & Reporting exists to feed into this document.
 
 ***
 
 ## Audience
 
-IT and security teams, sysadmins, and developers — the people who will actually implement fixes and need to reproduce and validate issues themselves. Unlike the Executive Report, acronyms and protocol-level detail are expected here, not avoided.
+IT and security teams, sysadmins, and developers - the people who will actually implement fixes and need to reproduce and validate issues themselves. Unlike the Executive Report, acronyms and protocol-level detail are expected here, not avoided.
 
 ***
 
@@ -38,12 +38,12 @@ IT and security teams, sysadmins, and developers — the people who will actuall
 
 A typical Technical Report is assembled, in order, from:
 
-1. Executive Summary — retained for context even though the primary audience here is technical
+1. Executive Summary - retained for context even though the primary audience here is technical
 2. Recommendations Summary
-3. Assessment Narrative — the attack chain walkthrough
-4. Findings — the bulk of the document
+3. Assessment Narrative - the attack chain walkthrough
+4. Findings - the bulk of the document
 5. Proof-of-Concept artefacts, referenced from the relevant findings where applicable
-6. Appendices — scope, methodology, severity ratings, and any dynamic appendices the engagement calls for
+6. Appendices - scope, methodology, severity ratings, and any dynamic appendices the engagement calls for
 
 ***
 
@@ -51,7 +51,7 @@ A typical Technical Report is assembled, in order, from:
 
 * Full technical detail throughout: reproduction steps, payloads, tool output, and CVSS breakdowns
 * Every finding fully fleshed out per Findings' "Breakdown of a Finding" structure
-* No requirement to avoid jargon — this is the one deliverable where it's expected and appropriate
+* No requirement to avoid jargon - this is the one deliverable where it's expected and appropriate
 
 ***
 
