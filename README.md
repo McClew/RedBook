@@ -64,9 +64,9 @@ _Generated from a full review of the Red Book against the HTB Academy "Penetrati
 
 ### Password Attacks
 
-| Topic               | Type       | Path                                               | Priority | Status |
-| ------------------- | ---------- | -------------------------------------------------- | -------- | ------ |
-| Password Extraction | Blank Page | field-manual/post-exploitation/password-extraction | High     | To Do  |
+| Topic             | Type       | Path                                             | Priority | Status |
+| ----------------- | ---------- | ------------------------------------------------ | -------- | ------ |
+| Data Exfiltration | Blank Page | field-manual/post-exploitation/data-exfiltration | High     | To Do  |
 
 ### Pivoting, Tunneling, and Port Forwarding
 

@@ -269,7 +269,7 @@
     * [Cracking Protected Files](field-manual/post-exploitation/password-cracking/cracking-protected-files.md)
     * [Custom Rules](field-manual/post-exploitation/password-cracking/custom-rules.md)
     * [Custom Wordlists](field-manual/post-exploitation/password-cracking/custom-wordlists.md)
-  * [Password Extraction](field-manual/post-exploitation/password-extraction.md)
+  * [Data Exfiltration](field-manual/post-exploitation/password-extraction.md)
   * [Persistence](field-manual/post-exploitation/persistence.md)
   * [Shells](field-manual/post-exploitation/shells/README.md)
     * [NetCat Bind Shell](field-manual/post-exploitation/shells/netcat-bind-shell.md)
