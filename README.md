@@ -37,29 +37,6 @@ layout:
 
 _Generated from a full review of the Red Book against the HTB Academy "Penetration Tester" path (28 modules). Covers fully-blank leaf pages and entirely missing topics only — blank section index pages are intentionally excluded._
 
-### Footprinting
-
-| Topic                         | Type       | Path                                                                            | Priority | Status |
-| ----------------------------- | ---------- | ------------------------------------------------------------------------------- | -------- | ------ |
-| 135, 593 - MSRPC              | Blank Page | field-manual/intelligence/port-and-service-enumeration/135-593-msrpc            | High     | To Do  |
-| 137, 138, 139 - NetBIOS       | Blank Page | field-manual/intelligence/port-and-service-enumeration/137-138-139-netbios      | High     | To Do  |
-| 161, 162, 10161, 10162 - SNMP | Blank Page | field-manual/intelligence/port-and-service-enumeration/161-162-10161-10162-snmp | High     | To Do  |
-| 3389 - RDP                    | Blank Page | field-manual/intelligence/port-and-service-enumeration/3389-rdp                 | High     | To Do  |
-| 22 - SFTP                     | Blank Page | field-manual/intelligence/port-and-service-enumeration/22-sftp                  | Medium   | To Do  |
-| 80, 443 - Web                 | Blank Page | field-manual/intelligence/port-and-service-enumeration/80-443-web               | Medium   | To Do  |
-| 143, 993 - IMAP               | Blank Page | field-manual/intelligence/port-and-service-enumeration/143-993-imap             | Medium   | To Do  |
-| 500 - IPsec/IKE VPN           | Blank Page | field-manual/intelligence/port-and-service-enumeration/500-ipsec-ike-vpn        | Medium   | To Do  |
-| 873 - Rsync                   | Blank Page | field-manual/intelligence/port-and-service-enumeration/873-rsync                | Medium   | To Do  |
-| 27017, 27018 - MongoDB        | Blank Page | field-manual/intelligence/port-and-service-enumeration/27017-27018-mongodb      | Medium   | To Do  |
-| 7 - Echo                      | Blank Page | field-manual/intelligence/port-and-service-enumeration/7-echo                   | Low      | To Do  |
-| 43 - WHOIS                    | Blank Page | field-manual/intelligence/port-and-service-enumeration/43-whois                 | Low      | To Do  |
-| 49 - TACACS+                  | Blank Page | field-manual/intelligence/port-and-service-enumeration/49-tacacs+               | Low      | To Do  |
-| 79 - Finger                   | Blank Page | field-manual/intelligence/port-and-service-enumeration/79-finger                | Low      | To Do  |
-| 111 - Portmapper              | Blank Page | field-manual/intelligence/port-and-service-enumeration/111-portmapper           | Low      | To Do  |
-| 113 - Ident                   | Blank Page | field-manual/intelligence/port-and-service-enumeration/113-ident                | Low      | To Do  |
-| 123 - NTP                     | Blank Page | field-manual/intelligence/port-and-service-enumeration/123-ntp                  | Low      | To Do  |
-| 194, 6667, 6660-7000 - IRC    | Blank Page | field-manual/intelligence/port-and-service-enumeration/194-6667-6660-7000-irc   | Low      | To Do  |
-
 ### Active Directory Enumeration & Attacks
 
 | Topic                                                                                   | Type          | Path                                                           | Priority | Status |
