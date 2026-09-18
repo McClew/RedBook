@@ -34,6 +34,8 @@ The following queries and their output will tell us that we are dealing with **M
 | `SELECT POW(1,1)`  | When we only have numeric output. | `1`                                                 | Error with other DBMS.                                    |
 | `SELECT SLEEP(5)`  | Blind/No Output.                  | Delays page response for 5 seconds and returns `0`. | Will not delay response with other DBMS.                  |
 
+***
+
 ## INFORMATION\_SCHEMA Database
 
 To pull data from tables using `UNION SELECT`, we need to properly form our `SELECT` queries. To do so, we need the following information:
@@ -53,6 +55,8 @@ SELECT * FROM my_database.users;
 ```
 
 Similarly, we can look at tables present in the `INFORMATION_SCHEMA` Database.
+
+***
 
 ## SCHEMATA
 
@@ -101,6 +105,8 @@ cn' UNION select 1,database(),2,3--
 
 We see that the database name is `ilfreight`. However, the other database (`dev`) looks interesting. So, let us try to retrieve the tables from it.
 
+***
+
 ## TABLES
 
 Before dumping data from the `dev` database, we need to get a list of the tables to query them with a `SELECT` statement. To find all tables within a database, we can use the `TABLES` table in the `INFORMATION_SCHEMA` Database.
@@ -124,6 +130,8 @@ We added a (`where table_schema='dev'`) condition to only return tables from the
 {% endhint %}
 
 We see four tables in the dev database, namely `credentials`, `framework`, `pages`, and `posts`. For example, the `credentials` table could contain sensitive information to look into it.
+
+***
 
 ## COLUMNS
 
