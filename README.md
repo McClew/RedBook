@@ -37,17 +37,10 @@ layout:
 
 _Generated from a full review of the Red Book against the HTB Academy "Penetration Tester" path (28 modules). Covers fully-blank leaf pages and entirely missing topics only — blank section index pages are intentionally excluded._
 
-### Penetration Testing Process
-
-| Topic                | Type       | Path                                       | Priority | Status |
-| -------------------- | ---------- | ------------------------------------------ | -------- | ------ |
-| Attack Path Planning | Blank Page | field-manual/analysis/attack-path-planning | Medium   | To Do  |
-
 ### Footprinting
 
 | Topic                         | Type       | Path                                                                            | Priority | Status |
 | ----------------------------- | ---------- | ------------------------------------------------------------------------------- | -------- | ------ |
-| 88 - Kerberos                 | Blank Page | field-manual/intelligence/port-and-service-enumeration/88-kerberos              | High     | To Do  |
 | 135, 593 - MSRPC              | Blank Page | field-manual/intelligence/port-and-service-enumeration/135-593-msrpc            | High     | To Do  |
 | 137, 138, 139 - NetBIOS       | Blank Page | field-manual/intelligence/port-and-service-enumeration/137-138-139-netbios      | High     | To Do  |
 | 161, 162, 10161, 10162 - SNMP | Blank Page | field-manual/intelligence/port-and-service-enumeration/161-162-10161-10162-snmp | High     | To Do  |
@@ -69,24 +62,12 @@ _Generated from a full review of the Red Book against the HTB Academy "Penetrati
 | 123 - NTP                     | Blank Page | field-manual/intelligence/port-and-service-enumeration/123-ntp                  | Low      | To Do  |
 | 194, 6667, 6660-7000 - IRC    | Blank Page | field-manual/intelligence/port-and-service-enumeration/194-6667-6660-7000-irc   | Low      | To Do  |
 
-### Network Enumeration with Nmap
-
-| Topic   | Type       | Path                                                              | Priority | Status |
-| ------- | ---------- | ----------------------------------------------------------------- | -------- | ------ |
-| Masscan | Blank Page | toolbox/tooling/information-gathering/network-enumeration/masscan | Low      | To Do  |
-
 ### Vulnerability Assessment
 
 | Topic                  | Type       | Path                                            | Priority | Status |
 | ---------------------- | ---------- | ----------------------------------------------- | -------- | ------ |
 | Vulnerability Scanning | Blank Page | field-manual/analysis/vulnerability-scanning    | High     | To Do  |
 | Nuclei                 | Blank Page | toolbox/tooling/web-application-analysis/nuclei | Medium   | To Do  |
-
-### Shells & Payloads
-
-| Topic  | Type       | Path                                     | Priority | Status |
-| ------ | ---------- | ---------------------------------------- | -------- | ------ |
-| NetCat | Blank Page | toolbox/tooling/post-exploitation/netcat | Medium   | To Do  |
 
 ### Using the Metasploit Framework
 
