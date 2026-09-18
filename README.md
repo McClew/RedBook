@@ -68,12 +68,6 @@ _Generated from a full review of the Red Book against the HTB Academy "Penetrati
 | ------ | ---------- | ----------------------------------------------- | -------- | ------ |
 | Nuclei | Blank Page | toolbox/tooling/web-application-analysis/nuclei | Medium   | To Do  |
 
-### Using the Metasploit Framework
-
-| Topic    | Type       | Path                                                   | Priority | Status |
-| -------- | ---------- | ------------------------------------------------------ | -------- | ------ |
-| MSFVenom | Blank Page | toolbox/tooling/exploitation-tools/metasploit/msfvenom | High     | To Do  |
-
 ### Password Attacks
 
 | Topic               | Type       | Path                                                          | Priority | Status |
@@ -176,10 +170,3 @@ _Generated from a full review of the Red Book against the HTB Academy "Penetrati
 | Command & Control | Blank Page | field-manual/post-exploitation/command-and-control     | Medium   | To Do  |
 | Firewall Bypass   | Blank Page | field-manual/post-exploitation/evasion/firewall-bypass | Medium   | To Do  |
 | Persistence       | Blank Page | field-manual/post-exploitation/persistence             | Medium   | To Do  |
-
-### Other / Not in current CPTS path
-
-| Topic            | Type       | Path                                      | Priority | Status |
-| ---------------- | ---------- | ----------------------------------------- | -------- | ------ |
-| Buffer Overflow  | Blank Page | field-manual/exploitation/buffer-overflow | Low      | To Do  |
-| Wireless Attacks | Blank Page | toolbox/tooling/wireless-attacks          | Low      | To Do  |

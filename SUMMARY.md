@@ -333,7 +333,7 @@
 * [Tooling](toolbox/tooling/README.md)
   * [Information Gathering](toolbox/tooling/information-gathering/README.md)
     * [dig](toolbox/tooling/information-gathering/dig.md)
-    * [Dirbuster](toolbox/tooling/information-gathering/dirbuster.md)
+    * [DirBuster](toolbox/tooling/information-gathering/dirbuster.md)
     * [DNSEnum](toolbox/tooling/information-gathering/dnsenum.md)
     * [DNSDumpster](toolbox/tooling/information-gathering/dnsdumpster.md)
     * [Fierce](toolbox/tooling/information-gathering/fierce.md)
