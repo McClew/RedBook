@@ -441,6 +441,7 @@
       * [PowerView](toolbox/tooling/post-exploitation/powersploit/powerview.md)
     * [PsExec](toolbox/tooling/post-exploitation/psexec.md)
     * [Rubeus](toolbox/tooling/post-exploitation/rubeus.md)
+    * [Snaffler](toolbox/tooling/post-exploitation/snaffler.md)
     * [wsgidav](toolbox/tooling/post-exploitation/wsgidav.md)
     * [xFreeRDP](toolbox/tooling/post-exploitation/xfreerdp.md)
   * [Network Tools](toolbox/tooling/network-tools/README.md)
