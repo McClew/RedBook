@@ -160,6 +160,7 @@
     * [Evil Microsoft Office Macro](field-manual/exploitation/client-side-exploitation/evil-microsoft-office-macro.md)
     * [Evil Windows Library File](field-manual/exploitation/client-side-exploitation/evil-windows-library-file.md)
   * [Initial Access](field-manual/exploitation/initial-access/README.md)
+    * [ADCS Attack](field-manual/exploitation/initial-access/adcs-attack.md)
     * [AS-REP Roasting](field-manual/exploitation/initial-access/as-rep-roasting.md)
   * [Man-in-the-Middle](field-manual/exploitation/man-in-the-middle/README.md)
     * [DHCP DNS Injection](field-manual/exploitation/man-in-the-middle/dhcp-dns-injection.md)
