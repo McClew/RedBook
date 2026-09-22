@@ -164,6 +164,7 @@
     * [AS-REP Roasting](field-manual/exploitation/initial-access/as-rep-roasting.md)
     * [DACL / ACL Abuse](field-manual/exploitation/initial-access/dacl-acl-abuse.md)
     * [Kerberos Delegation Abuse](field-manual/exploitation/initial-access/kerberos-delegation-abuse.md)
+    * [NTLM Relay & Coercion Attacks](field-manual/exploitation/initial-access/ntlm-relay-and-coercion-attacks.md)
   * [Man-in-the-Middle](field-manual/exploitation/man-in-the-middle/README.md)
     * [DHCP DNS Injection](field-manual/exploitation/man-in-the-middle/dhcp-dns-injection.md)
     * [IPv6 DNS Takeover](field-manual/exploitation/man-in-the-middle/ipv6-dns-takeover.md)

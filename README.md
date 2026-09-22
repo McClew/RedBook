@@ -39,20 +39,14 @@ _Generated from a full review of the Red Book against the HTB Academy "Penetrati
 
 ### Active Directory Enumeration & Attacks
 
-| Topic                                                                                   | Type          | Path                                                           | Priority | Status |
-| --------------------------------------------------------------------------------------- | ------------- | -------------------------------------------------------------- | -------- | ------ |
-| Lateral Movement                                                                        | Blank Page    | field-manual/post-exploitation/lateral-movement                | High     | To Do  |
-| PsExec                                                                                  | Blank Page    | toolbox/tooling/post-exploitation/psexec                       | High     | To Do  |
-| Active Directory Certificate Services (ADCS) attacks (ESC1-ESC8, Certipy)               | Missing Topic | not yet created                                                | High     | To Do  |
-| Kerberos Delegation Abuse (unconstrained / constrained / RBCD)                          | Missing Topic | not yet created                                                | High     | To Do  |
-| DACL / ACL Abuse (GenericAll, GenericWrite, WriteDACL, ForceChangePassword, WriteOwner) | Missing Topic | not yet created                                                | High     | To Do  |
-| NTLM Relay & Coercion Attacks (PetitPotam, PrintNightmare, ZeroLogon, noPac)            | Missing Topic | not yet created                                                | High     | To Do  |
-| Golden Ticket / Silver Ticket Attacks                                                   | Missing Topic | not yet created                                                | High     | To Do  |
-| Pass-the-Hash / Overpass-the-Hash                                                       | Missing Topic | not yet created                                                | High     | To Do  |
-| DHCP DNS Injection                                                                      | Blank Page    | field-manual/exploitation/man-in-the-middle/dhcp-dns-injection | Medium   | To Do  |
-| WPAD Poisoning                                                                          | Blank Page    | field-manual/exploitation/man-in-the-middle/wpad-poisoning     | Medium   | To Do  |
-| Domain Trust Abuse (parent/child, cross-forest, SIDHistory/ExtraSIDs)                   | Missing Topic | not yet created                                                | Medium   | To Do  |
-| Group Policy Object (GPO) Abuse                                                         | Missing Topic | not yet created                                                | Medium   | To Do  |
+| Topic                                                                 | Type          | Path                                                           | Priority | Status |
+| --------------------------------------------------------------------- | ------------- | -------------------------------------------------------------- | -------- | ------ |
+| Golden Ticket / Silver Ticket Attacks                                 | Missing Topic | not yet created                                                | High     | To Do  |
+| Pass-the-Hash / Overpass-the-Hash                                     | Missing Topic | not yet created                                                | High     | To Do  |
+| DHCP DNS Injection                                                    | Blank Page    | field-manual/exploitation/man-in-the-middle/dhcp-dns-injection | Medium   | To Do  |
+| WPAD Poisoning                                                        | Blank Page    | field-manual/exploitation/man-in-the-middle/wpad-poisoning     | Medium   | To Do  |
+| Domain Trust Abuse (parent/child, cross-forest, SIDHistory/ExtraSIDs) | Missing Topic | not yet created                                                | Medium   | To Do  |
+| Group Policy Object (GPO) Abuse                                       | Missing Topic | not yet created                                                | Medium   | To Do  |
 
 ### Cross-Site Scripting (XSS)
 
