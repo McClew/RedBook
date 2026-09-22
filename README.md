@@ -44,12 +44,6 @@ _Generated from a full review of the Red Book against the HTB Academy "Penetrati
 | Reflected XSS     | Blank Page | field-manual/exploitation/web-attacks/cross-site-scripting-xss/reflected-xss     | High     | To Do  |
 | Session Hijacking | Blank Page | field-manual/exploitation/web-attacks/cross-site-scripting-xss/session-hijacking | Medium   | To Do  |
 
-### File Inclusion
-
-| Topic                      | Type       | Path                                                         | Priority | Status |
-| -------------------------- | ---------- | ------------------------------------------------------------ | -------- | ------ |
-| File Inclusion (LFI / RFI) | Blank Page | field-manual/exploitation/web-attacks/file-inclusion-lfi-rfi | High     | To Do  |
-
 ### Web Attacks
 
 | Topic                                    | Type       | Path                                                                         | Priority | Status |
