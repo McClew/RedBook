@@ -33,16 +33,9 @@ layout:
 >
 > This manual aims to distil complex methodologies and accumulated knowledge into an easily accessible format, enabling users to quickly locate and apply relevant information across all stages of a penetration testing engagement.
 
-## CPTS Knowledge Base — Gap To-Do List
+## CPTS Knowledge Base - Gap To-Do List
 
-_Generated from a full review of the Red Book against the HTB Academy "Penetration Tester" path (28 modules). Covers fully-blank leaf pages and entirely missing topics only — blank section index pages are intentionally excluded._
-
-### Active Directory Enumeration & Attacks
-
-| Topic                                                                 | Type          | Path            | Priority | Status |
-| --------------------------------------------------------------------- | ------------- | --------------- | -------- | ------ |
-| Domain Trust Abuse (parent/child, cross-forest, SIDHistory/ExtraSIDs) | Missing Topic | not yet created | Medium   | To Do  |
-| Group Policy Object (GPO) Abuse                                       | Missing Topic | not yet created | Medium   | To Do  |
+_Generated from a full review of the Red Book against the HTB Academy "Penetration Tester" path (28 modules). Covers fully-blank leaf pages and entirely missing topics only - blank section index pages are intentionally excluded._
 
 ### Cross-Site Scripting (XSS)
 
