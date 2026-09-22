@@ -37,13 +37,6 @@ layout:
 
 _Generated from a full review of the Red Book against the HTB Academy "Penetration Tester" path (28 modules). Covers fully-blank leaf pages and entirely missing topics only - blank section index pages are intentionally excluded._
 
-### Cross-Site Scripting (XSS)
-
-| Topic             | Type       | Path                                                                             | Priority | Status |
-| ----------------- | ---------- | -------------------------------------------------------------------------------- | -------- | ------ |
-| Reflected XSS     | Blank Page | field-manual/exploitation/web-attacks/cross-site-scripting-xss/reflected-xss     | High     | To Do  |
-| Session Hijacking | Blank Page | field-manual/exploitation/web-attacks/cross-site-scripting-xss/session-hijacking | Medium   | To Do  |
-
 ### Web Attacks
 
 | Topic                                    | Type       | Path                                                                         | Priority | Status |
