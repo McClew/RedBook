@@ -39,11 +39,10 @@ _Generated from a full review of the Red Book against the HTB Academy "Penetrati
 
 ### Active Directory Enumeration & Attacks
 
-| Topic                                                                 | Type          | Path                                                       | Priority | Status |
-| --------------------------------------------------------------------- | ------------- | ---------------------------------------------------------- | -------- | ------ |
-| WPAD Poisoning                                                        | Blank Page    | field-manual/exploitation/man-in-the-middle/wpad-poisoning | Medium   | To Do  |
-| Domain Trust Abuse (parent/child, cross-forest, SIDHistory/ExtraSIDs) | Missing Topic | not yet created                                            | Medium   | To Do  |
-| Group Policy Object (GPO) Abuse                                       | Missing Topic | not yet created                                            | Medium   | To Do  |
+| Topic                                                                 | Type          | Path            | Priority | Status |
+| --------------------------------------------------------------------- | ------------- | --------------- | -------- | ------ |
+| Domain Trust Abuse (parent/child, cross-forest, SIDHistory/ExtraSIDs) | Missing Topic | not yet created | Medium   | To Do  |
+| Group Policy Object (GPO) Abuse                                       | Missing Topic | not yet created | Medium   | To Do  |
 
 ### Cross-Site Scripting (XSS)
 
