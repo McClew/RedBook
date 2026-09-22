@@ -41,8 +41,6 @@ _Generated from a full review of the Red Book against the HTB Academy "Penetrati
 
 | Topic                                                                 | Type          | Path                                                           | Priority | Status |
 | --------------------------------------------------------------------- | ------------- | -------------------------------------------------------------- | -------- | ------ |
-| Golden Ticket / Silver Ticket Attacks                                 | Missing Topic | not yet created                                                | High     | To Do  |
-| Pass-the-Hash / Overpass-the-Hash                                     | Missing Topic | not yet created                                                | High     | To Do  |
 | DHCP DNS Injection                                                    | Blank Page    | field-manual/exploitation/man-in-the-middle/dhcp-dns-injection | Medium   | To Do  |
 | WPAD Poisoning                                                        | Blank Page    | field-manual/exploitation/man-in-the-middle/wpad-poisoning     | Medium   | To Do  |
 | Domain Trust Abuse (parent/child, cross-forest, SIDHistory/ExtraSIDs) | Missing Topic | not yet created                                                | Medium   | To Do  |
