@@ -65,12 +65,6 @@ _Generated from a full review of the Red Book against the HTB Academy "Penetrati
 | Web Cache Deception                      | Blank Page | field-manual/exploitation/web-attacks/web-cache-deception                    | Low      | To Do  |
 | WebSocket Vulnerabilities                | Blank Page | field-manual/exploitation/web-attacks/websocket-vulnerabilities              | Low      | To Do  |
 
-### Windows Privilege Escalation
-
-| Topic               | Type       | Path                                                                      | Priority | Status |
-| ------------------- | ---------- | ------------------------------------------------------------------------- | -------- | ------ |
-| Legacy Exploitation | Blank Page | field-manual/post-exploitation/privilege-escalation-1/legacy-exploitation | Medium   | To Do  |
-
 ### Attacking Enterprise Networks
 
 | Topic             | Type       | Path                                                   | Priority | Status |
