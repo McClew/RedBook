@@ -51,11 +51,3 @@ _Generated from a full review of the Red Book against the HTB Academy "Penetrati
 | Cross-Origin Resource Sharing (CORS)     | Blank Page | field-manual/exploitation/web-attacks/cross-origin-resource-sharing-cors     | Low      | To Do  |
 | Web Cache Deception                      | Blank Page | field-manual/exploitation/web-attacks/web-cache-deception                    | Low      | To Do  |
 | WebSocket Vulnerabilities                | Blank Page | field-manual/exploitation/web-attacks/websocket-vulnerabilities              | Low      | To Do  |
-
-### Attacking Enterprise Networks
-
-| Topic             | Type       | Path                                                   | Priority | Status |
-| ----------------- | ---------- | ------------------------------------------------------ | -------- | ------ |
-| Command & Control | Blank Page | field-manual/post-exploitation/command-and-control     | Medium   | To Do  |
-| Firewall Bypass   | Blank Page | field-manual/post-exploitation/evasion/firewall-bypass | Medium   | To Do  |
-| Persistence       | Blank Page | field-manual/post-exploitation/persistence             | Medium   | To Do  |
