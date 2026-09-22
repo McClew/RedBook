@@ -162,6 +162,7 @@
   * [Initial Access](field-manual/exploitation/initial-access/README.md)
     * [ADCS Attack](field-manual/exploitation/initial-access/adcs-attack.md)
     * [AS-REP Roasting](field-manual/exploitation/initial-access/as-rep-roasting.md)
+    * [DACL / ACL Abuse](field-manual/exploitation/initial-access/dacl-acl-abuse.md)
     * [Kerberos Delegation Abuse](field-manual/exploitation/initial-access/kerberos-delegation-abuse.md)
   * [Man-in-the-Middle](field-manual/exploitation/man-in-the-middle/README.md)
     * [DHCP DNS Injection](field-manual/exploitation/man-in-the-middle/dhcp-dns-injection.md)
