@@ -32,22 +32,3 @@ layout:
 > For more detailed information on the foundational principles and technical aspects that underpin this manual's structure, please refer to the official PTES website: [http://www.pentest-standard.org/index.php/PTES\_Technical\_Guidelines](http://www.pentest-standard.org/index.php/PTES_Technical_Guidelines).
 >
 > This manual aims to distil complex methodologies and accumulated knowledge into an easily accessible format, enabling users to quickly locate and apply relevant information across all stages of a penetration testing engagement.
-
-## CPTS Knowledge Base - Gap To-Do List
-
-_Generated from a full review of the Red Book against the HTB Academy "Penetration Tester" path (28 modules). Covers fully-blank leaf pages and entirely missing topics only - blank section index pages are intentionally excluded._
-
-### Web Attacks
-
-| Topic                                    | Type       | Path                                                                         | Priority | Status |
-| ---------------------------------------- | ---------- | ---------------------------------------------------------------------------- | -------- | ------ |
-| Remote Code Execution                    | Blank Page | field-manual/exploitation/remote-code-execution                              | High     | To Do  |
-| Insecure Direct Object References (IDOR) | Blank Page | field-manual/exploitation/web-attacks/insecure-direct-object-references-idor | High     | To Do  |
-| Authentication Bypass                    | Blank Page | field-manual/exploitation/authentication-bypass                              | Medium   | To Do  |
-| Authentication Vulnerabilities           | Blank Page | field-manual/exploitation/web-attacks/authentication-vulnerabilities         | Medium   | To Do  |
-| Cross-Site Request Forgery (CSRF)        | Blank Page | field-manual/exploitation/web-attacks/cross-site-request-forgery-csrf        | Medium   | To Do  |
-| Server-Side Template Injection (SSTI)    | Blank Page | field-manual/exploitation/web-attacks/server-side-template-injection-ssti    | Medium   | To Do  |
-| Clickjacking                             | Blank Page | field-manual/exploitation/web-attacks/clickjacking                           | Low      | To Do  |
-| Cross-Origin Resource Sharing (CORS)     | Blank Page | field-manual/exploitation/web-attacks/cross-origin-resource-sharing-cors     | Low      | To Do  |
-| Web Cache Deception                      | Blank Page | field-manual/exploitation/web-attacks/web-cache-deception                    | Low      | To Do  |
-| WebSocket Vulnerabilities                | Blank Page | field-manual/exploitation/web-attacks/websocket-vulnerabilities              | Low      | To Do  |
