@@ -416,6 +416,7 @@
   * [Password Attacks](toolbox/tooling/password-attacks/README.md)
     * [CeWL](toolbox/tooling/password-attacks/cewl.md)
     * [Crowbar](toolbox/tooling/password-attacks/crowbar.md)
+    * [DPAT](toolbox/tooling/password-attacks/dpat.md)
     * [Hashcat](toolbox/tooling/password-attacks/hashcat.md)
     * [hashid](toolbox/tooling/password-attacks/hashid.md)
     * [Hydra](toolbox/tooling/password-attacks/hydra.md)
