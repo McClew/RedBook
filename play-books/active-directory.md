@@ -26,54 +26,138 @@ layout:
 
 ## If / Then Guide
 
-| If Enumeration Reveals... | ...Focus on these Attacks... | ...and perform these Actions |
-| ------------------------- | ---------------------------- | ---------------------------- |
-|                           |                              |                              |
-|                           |                              |                              |
-|                           |                              |                              |
-|                           |                              |                              |
-|                           |                              |                              |
-|                           |                              |                              |
-|                           |                              |                              |
-|                           |                              |                              |
+| If Enumeration Reveals...                                                | ...Focus on these Attacks...                                                                                                                                                                                                                                                                      | ...and perform these Actions                                                                                               |
+| ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| SMB NULL session / LDAP anonymous bind allowed                           | <ul><li><a data-mention href="../field-manual/exploitation/attacking-services/ldap.md">ldap.md</a></li><li><a data-mention href="../field-manual/exploitation/attacking-services/smb.md">smb.md</a></li></ul>                                                                                     | Pull the user list, then feed it into AS-REP roasting and password spraying. `rpcclient -U "" -N <dc-ip>` → `enumdomusers` |
+| Multicast/broadcast name resolution active (LLMNR/NBT-NS/mDNS)           | <ul><li><a data-mention href="../field-manual/exploitation/man-in-the-middle/llmnr-nbt-ns-poisoning.md">llmnr-nbt-ns-poisoning.md</a></li><li><a data-mention href="../field-manual/exploitation/man-in-the-middle/ipv6-dns-takeover.md">ipv6-dns-takeover.md</a></li></ul>                       | Poison with responder to capture NetNTLMv2, then crack or relay                                                            |
+| SMB signing not required on hosts                                        | <ul><li><a data-mention href="../field-manual/exploitation/initial-access/ntlm-relay-and-coercion-attacks.md">ntlm-relay-and-coercion-attacks.md</a></li></ul>                                                                                                                                    | Relay captured/coerced auth with `ntlmrelayx.py` to a non-signing host                                                     |
+| Users without Kerberos pre-auth (`DONT_REQ_PREAUTH`)                     | <ul><li><a data-mention href="../field-manual/exploitation/initial-access/as-rep-roasting.md">as-rep-roasting.md</a></li></ul>                                                                                                                                                                    | `impacket-GetNPUsers` to pull the AS-REP hash, crack with hashcat (`-m 18200`)                                             |
+| Service accounts with an SPN (valid creds held)                          | <ul><li><a data-mention href="../field-manual/post-exploitation/privilege-escalation-1/kerberoasting/">kerberoasting</a></li></ul>                                                                                                                                                                | `impacket-GetUserSPNs ... -request`, crack with hashcat (`-m 13100`)                                                       |
+| Weak/guessable domain password policy                                    | <ul><li><a data-mention href="../field-manual/exploitation/brute-force/">brute-force</a> > <a data-mention href="../field-manual/exploitation/brute-force/smb.md">smb.md</a></li></ul>                                                                                                            | Password spray the user list: `nxc smb <dc-ip> -u users.txt -p 'Season2025!' --continue-on-success`                        |
+| Abusable ACLs in BloodHound (GenericAll, WriteDACL, ForceChangePassword) | <ul><li><a data-mention href="../field-manual/exploitation/initial-access/dacl-acl-abuse.md">dacl-acl-abuse.md</a></li></ul>                                                                                                                                                                      | Reset a password / add to group / grant DCSync via the ACE, then pivot to that principal                                   |
+| Owned principal has DS-Replication rights                                | <ul><li><a data-mention href="../field-manual/post-exploitation/privilege-escalation-1/dcsync.md">dcsync.md</a></li></ul>                                                                                                                                                                         | `impacket-secretsdump` to DCSync the domain hashes (target `krbtgt`, Administrator)                                        |
+| Delegation configured (unconstrained / constrained / RBCD)               | <ul><li><a data-mention href="../field-manual/exploitation/initial-access/kerberos-delegation-abuse.md">kerberos-delegation-abuse.md</a></li></ul>                                                                                                                                                | Abuse the delegation to impersonate a privileged user to a service                                                         |
+| AD CS / certificate templates present                                    | <ul><li><a data-mention href="../field-manual/exploitation/initial-access/adcs-attack.md">adcs-attack.md</a></li></ul>                                                                                                                                                                            | `certipy find -vulnerable`, then exploit the matching ESCx path                                                            |
+| Writable GPO / GPP cpassword in SYSVOL                                   | <ul><li><a data-mention href="../field-manual/exploitation/initial-access/group-policy-object-gpo-abuse.md">group-policy-object-gpo-abuse.md</a></li></ul>                                                                                                                                        | Decrypt GPP cpassword, or abuse GPO write to run a privileged action                                                       |
+| NThash or ticket obtained (no plaintext)                                 | <ul><li><a data-mention href="../field-manual/exploitation/initial-access/pass-the-hash-overpass-the-hash.md">pass-the-hash-overpass-the-hash.md</a></li></ul>                                                                                                                                    | `nxc smb <target> -u user -H <nthash>`, or pass-the-ticket                                                                 |
+| Domain/forest trust present                                              | <ul><li><a data-mention href="../field-manual/exploitation/initial-access/domain-trust-abuse.md">domain-trust-abuse.md</a></li><li><a data-mention href="../field-manual/exploitation/initial-access/golden-ticket-silver-ticket-attacks.md">golden-ticket-silver-ticket-attacks.md</a></li></ul> | Enumerate trust direction, then ExtraSID (child→parent) or cross-forest Kerberoast / SID-history                           |
 
 ***
 
 ## Uncredentialed Enumeration
 
-### Host Indenticiation
+### Host Identification
 
 {% stepper %}
 {% step %}
-#### Listening with Wireshark
+#### Passive Listening (Wireshark / net)
 
-Use Wireshark and listen for Layer 2 ( ARP, NDNS ) traffic to discover IP addresses and hostnames.
+Passively listen for Layer 2 traffic (ARP, LLMNR/NBT-NS/mDNS) to discover IP addresses and hostnames without sending a single packet — useful when you must stay quiet.
+
+```bash
+sudo wireshark   # display filter: arp || llmnr || nbns || mdns
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> broadcast name-resolution requests that reveal hostnames, the AD domain name (often in NBNS/Browser traffic), and which hosts are chatty.
+
+```
+NBNS  10.10.10.52 -> broadcast   Name query NB WORKSTATION01<00>
+MDNS  10.10.10.60 -> 224.0.0.251 Standard query 0x0 PTR _smb._tcp.local
+```
+
+<mark style="color:$primary;">**Next:**</mark> record every hostname/IP into your target list; chatty hosts issuing failed lookups are prime poisoning targets → _Responder Analysis_.
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
 #### Analysing with Responder
 
-Use Responder in 'Analyze' mode to discover IP addresses and hostnames
+Run [responder.md](../toolbox/tooling/sniffing-and-spoofing/responder.md "mention") in '**analyze mode**' - it _watches_ LLMNR/NBT-NS/mDNS without poisoning, so we can see what is poisonable before touching anything.
+
+See [llmnr-nbt-ns-poisoning.md](../field-manual/exploitation/man-in-the-middle/llmnr-nbt-ns-poisoning.md "mention").
+
+```bash
+sudo responder -I eth0 -A
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> `[Analyze mode: ...]` lines showing hosts requesting names that don't resolve - each is a host you could poison to capture its NetNTLMv2 hash. Note the requesting IP and the name requested.
+
+```
+[Analyze mode: LLMNR] Request by ['10.10.10.52'] for 'fileshare', ignoring
+[Analyze mode: NBT-NS] Request by ['10.10.10.52'] for 'INTRANET', ignoring
+```
+
+<mark style="color:$primary;">**What it means:**</mark> a workstation is looking for a name with no DNS record (typo'd share, decommissioned host). In active mode you would answer as that host and the client would authenticate to you.
+
+<mark style="color:$primary;">**Next:**</mark> if you see requests, drop 'analyze mode' and poison for real > _User Foothold › Responder / Inveigh Capture_. Separately, build a relay target list of hosts **without** SMB signing: `nxc smb 10.10.10.0/24 --gen-relay-list relay.txt`.
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
 #### ICMP Sweep
 
-Perform an Fping ICMP sweep to final all hosts on your subnet that respond to an ICMP echo request.
+Perform an `fping` sweep to find hosts that respond to ICMP echo on the subnet.
+
+```bash
+fping -asgq 10.10.10.0/24
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> the list of live IPs printed by `-a` (alive).
+
+```
+10.10.10.5
+10.10.10.25
+10.10.10.52
+```
+
+<mark style="color:$primary;">**Next:**</mark> feed the alive list into the nmap scans below. Note that ICMP is often filtered - a sparse result does **not** mean few hosts; confirm with nmap `-Pn`.
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
 #### Nmap Network Scan
 
-Perform an NMAP identification scan to validate findings (it may find something previously missed).
+Validate the live-host list with nmap - it may surface hosts the ICMP sweep missed.
+
+```bash
+nmap -sn 10.10.10.0/24 -oA hosts
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> `Host is up` entries and any resolved hostnames.
+
+```bash
+Nmap scan report for DC01.domain.local (10.10.10.5)
+Host is up (0.012s latency).
+```
+
+<mark style="color:$primary;">**Next:**</mark> take the confirmed host list into the service scan.
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
 #### Nmap Service Scan
 
-Use all discovered hosts to perform an NMAP scan to determine services running on each host.
+Scan each host with nmap to fingerprint services. See [88-kerberos.md](../field-manual/intelligence/port-and-service-enumeration/88-kerberos.md "mention").
 
-1. Look for quick wins for initial foothold, like outdated software, service or OS.
+```bash
+nmap -p- -sV -sC -oA ad_full <target>
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> the DC "tell" - [88-kerberos.md](../field-manual/intelligence/port-and-service-enumeration/88-kerberos.md "mention")**,** [389-636-3268-3269-ldap.md](../field-manual/intelligence/port-and-service-enumeration/389-636-3268-3269-ldap.md "mention")**,** [139-445-smb.md](../field-manual/intelligence/port-and-service-enumeration/139-445-smb.md "mention")**,** [53-dns.md](../field-manual/intelligence/port-and-service-enumeration/53-dns.md "mention") open on one host confirms a domain controller. The LDAP/SMB scripts usually leak the domain FQDN and hostname.
+
+```
+88/tcp   open  kerberos-sec
+389/tcp  open  ldap      Microsoft Windows AD LDAP (Domain: domain.local)
+445/tcp  open  microsoft-ds
+```
+
+<mark style="color:$primary;">**What it means:**</mark> you now have the DC IP and the domain name - the two values that seed every command below.
+
+<mark style="color:$primary;">**Next:**</mark> set your `<dc-ip>` and `domain.local` variables; check versions for quick-win RCE (see _Vulnerability Check_ below).
 {% endstep %}
 {% endstepper %}
 
