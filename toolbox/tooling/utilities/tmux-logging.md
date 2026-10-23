@@ -35,15 +35,21 @@ Tmux Logging is a tool that will capture all of a terminals acitivity within a T
 
 ## Cheatsheet
 
-| Command          | Description                    |
-| ---------------- | ------------------------------ |
-| `tmux`           | Start tmux                     |
-| `ctrl+b`         | tmux: default prefix           |
-| `prefix c`       | tmux: new window               |
-| `prefix 1`       | tmux: switch to window (`1`)   |
-| `prefix shift+%` | tmux: split pane vertically    |
-| `prefix shift+"` | tmux: split pane horizontally  |
-| `prefix ->`      | tmux: switch to the right pane |
+{% tabs %}
+{% tab title="Commands" %}
+<table><thead><tr><th width="226">Shortcut</th><th>Description</th></tr></thead><tbody><tr><td><code>tmux new -s</code></td><td>Start a new tmux session</td></tr><tr><td><code>tmux new-session -A -s</code></td><td>Start a new session or attach to an existing session named mysession</td></tr><tr><td><code>tmux ls</code></td><td>List all sessions</td></tr><tr><td><code>tmux kill-session -t</code></td><td>Kill/delete session</td></tr><tr><td><code>tmux kill-session -a</code></td><td>Kill all sessions but current</td></tr><tr><td><code>tmux a</code><br><code>tmux a -t</code></td><td>Attach to last session</td></tr></tbody></table>
+{% endtab %}
+
+{% tab title="Shortcuts" %}
+{% hint style="info" %}
+#### Default Prefix
+
+`ctrl+b`
+{% endhint %}
+
+<table><thead><tr><th width="210">Shortcut</th><th>Description</th></tr></thead><tbody><tr><td><code>prefix [c]</code></td><td>Open new window</td></tr><tr><td><code>prefix + [Shift + P]</code></td><td>Start/stop logging with tmux logger</td></tr><tr><td><code>prefix [1]</code></td><td>Switch to window (<code>1</code>)</td></tr><tr><td><code>prefix + [Shift + O]</code></td><td>Switch between tmux panes</td></tr><tr><td><code>prefix + [shift + %]</code></td><td>Split pane vertically</td></tr><tr><td><code>prefix + [shift + "]</code></td><td>Split pane horizontally</td></tr><tr><td><code>prefix [->]</code></td><td>Switch to the right pane</td></tr></tbody></table>
+{% endtab %}
+{% endtabs %}
 
 ***
 
