@@ -47,6 +47,7 @@
   * [Network Enumeration](field-manual/intelligence/network-enumeration/README.md)
     * [DNS](field-manual/intelligence/network-enumeration/dns.md)
   * [OSINT](field-manual/intelligence/osint/README.md)
+    * [Certificate Transparency](field-manual/intelligence/osint/certificate-transparency.md)
     * [Identity Hunting](field-manual/intelligence/osint/identity-hunting.md)
     * [Search Engine Discovery](field-manual/intelligence/osint/search-engine-discovery.md)
   * [Port & Service Enumeration](field-manual/intelligence/port-and-service-enumeration/README.md)
